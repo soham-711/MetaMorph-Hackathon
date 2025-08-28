@@ -714,7 +714,7 @@ if __name__ == "__main__":
     run_frontend()
     time.sleep(1) 
     open_browser()
-    time.sleep(2) 
+    time.sleep(3) 
     run_backend()
      # give backend a head start
 

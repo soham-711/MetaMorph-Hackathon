@@ -1200,7 +1200,282 @@
 #             print(f"Cleanup error: {e}")
 
 
-# core/assistant.py
+
+
+
+
+
+
+# # core/assistant.py
+# import atexit
+# import threading
+# import time
+# import os
+# import platform
+# import subprocess
+
+# from core.speech import SpeechEngine
+# from core.wake_word import WakeWordDetector
+# from core.conversation import ConversationEngine
+# from core.datetime_info import get_time, get_day_and_date
+# from core.image_engine import ImageEngine
+# from utils.task_bus import TaskBus
+# from core.workers import BackgroundWorkers
+# from core.dispatcher import CommandDispatcher
+
+
+# class PicoAssistant:
+#     """
+#     Foreground: LLM conversation (responsive).
+#     Background: Heavy tasks via TaskBus (image generation, etc.).
+#     Results are announced only when Pico finishes speaking.
+#     """
+
+#     def __init__(self, ws_manager=None):
+#         # store WS manager to publish states
+#         self.ws_manager = ws_manager
+
+#         # pass state_callback so SpeechEngine calls back for 'listening'/'speaking'/'idle'
+#         self.speech = SpeechEngine(state_callback=self._on_state_change)
+#         self.wake = WakeWordDetector()
+#         self.conversation = ConversationEngine()
+#         self.image_engine = ImageEngine()
+#         self.bus = TaskBus()
+#         self.active_tasks = {}  # task_id -> kind (for example, "image")
+#         self.last_image_path = None  # store last generated image for "show me"
+
+#         # background workers + dispatcher
+#         self.workers = BackgroundWorkers(self.image_engine)
+#         self.command_dispatcher = CommandDispatcher(self.workers, self.bus)
+
+#         atexit.register(self.cleanup)
+
+#     # -------- state callback bridge --------
+#     def _on_state_change(self, state: str):
+#         """Forward state changes to WS manager if available."""
+#         print(f"Pico state callback: {state}")
+#         if self.ws_manager:
+#             try:
+#                 self.ws_manager.publish_state(state)
+#             except Exception as e:
+#                 print(f"Failed to publish state to WS manager: {e}")
+
+#     # ------------- helpers -------------
+#     def safe_speak(self, text: str):
+#         try:
+#             self.speech.speak(text)
+#         except Exception as e:
+#             print(f"TTS Error: {e}")
+#             print(f"Pico (text only): {text}")
+
+#     def _show_image(self, path: str):
+#         """Open an image file with the default OS viewer."""
+#         try:
+#             if platform.system() == "Windows":
+#                 os.startfile(path)
+#                 print(path)
+#             elif platform.system() == "Darwin":  # macOS
+#                 subprocess.run(["open", path])
+#             else:  # Linux
+#                 subprocess.run(["xdg-open", path])
+#         except Exception as e:
+#             print(f"Failed to open image {path}: {e}")
+
+#     def _handle_image_reaction(self):
+#         """Listen for a short reaction after showing an image."""
+#         self.safe_speak("What do you think about this image?")
+#         reaction = None
+#         start = time.time()
+#         while time.time() - start < 8:  # give up to 8s for a reaction
+#             reaction = self.speech.listen()
+#             if reaction:
+#                 break
+
+#         if not reaction:
+#             return  # no reaction, skip
+
+#         r = reaction.lower()
+#         if any(word in r for word in ["nice", "good", "amazing", "wow", "love", "beautiful"]):
+#             self.safe_speak("I'm glad you liked the image! 🌟 Would you like me to create another one?")
+#         elif any(word in r for word in ["bad", "ugly", "not good", "poor", "terrible"]):
+#             self.safe_speak("Oh, sorry about that 😔. Should I try generating a new version for you?")
+#         else:
+#             # fallback → treat as normal conversation
+#             self.safe_speak("Thanks for your feedback. Let's continue.")
+#             print(f"Pico (reaction fallback): {reaction}")
+
+#     def _deliver_background_results_if_free(self):
+#         """
+#         Announce exactly one background result if Pico is not speaking.
+#         """
+#         if getattr(self.speech, "is_speaking", False):
+#             return
+
+#         result = self.bus.get_result()
+#         if not result:
+#             return
+
+#         msg = result.message
+#         if result.kind == "image_done":
+#             if isinstance(result.payload, str):
+#                 if "failed" in result.payload.lower():
+#                     msg = result.payload
+#                 else:
+#                     msg = f"Your image is ready. Saved at: {result.payload}"
+#                     self.last_image_path = result.payload  # store for "show me"
+#             elif result.payload:
+#                 msg = "Your image is ready."
+
+#         print(f"Pico (background): {msg}")
+#         self.safe_speak(msg)
+
+#     # ------------- intent + dispatch -------------
+#     def _is_cancel(self, text: str) -> bool:
+#         t = text.lower()
+#         tokens = [
+#             "cancel", "stop", "no need", "never mind", "nevermind",
+#             "leave it", "forget it", "don't want", "dont want"
+#         ]
+#         return any(tok in t for tok in tokens)
+
+#     def _maybe_dispatch_command(self, user_input: str) -> bool:
+#         """
+#         Detect commands and dispatch background jobs.
+#         Returns True if a command was dispatched.
+#         """
+#         text = user_input.lower()
+
+#         # cancel image tasks
+#         if self._is_cancel(text) and "image" in text:
+#             cancelled = 0
+#             for tid, kind in list(self.active_tasks.items()):
+#                 if kind == "image":
+#                     if self.bus.cancel(tid):
+#                         cancelled += 1
+#                     self.active_tasks.pop(tid, None)
+#             if cancelled:
+#                 self.safe_speak("Okay, I have cancelled your image request.")
+#             else:
+#                 self.safe_speak("There was no image task to cancel.")
+#             return True
+
+#         # show image
+#         if "show me the image" in text or "display image" in text:
+#             if self.last_image_path and os.path.exists(self.last_image_path):
+#                 self.safe_speak("Here is your last generated image.")
+#                 threading.Thread(
+#                     target=lambda: self._show_image(self.last_image_path),
+#                     daemon=True
+#                 ).start()
+#                 # After showing, handle reaction
+#                 self._handle_image_reaction()
+#             else:
+#                 self.safe_speak("Sorry, I don't have an image ready to show yet.")
+#             return True
+
+#         # handle image generation
+#         if "generate image" in text or "create image" in text or "draw" in text:
+#             self.safe_speak("Sure! Please describe the image you want me to create.")
+
+#             # Listen for up to 10 seconds
+#             description = None
+#             start_time = time.time()
+#             while time.time() - start_time < 10:
+#                 description = self.speech.listen()
+#                 if description:
+#                     break
+
+#             if not description:
+#                 self.safe_speak("I didn't catch that. Please try again later.")
+#                 return True
+
+#             # Dispatch background image generation
+#             task_id = self.command_dispatcher.handle(description)
+#             if task_id:
+#                 self.active_tasks[task_id] = "image"
+
+#             self.safe_speak(
+#                 "Got it! I'm generating your image in the background while we continue talking."
+#             )
+#             return True
+
+#         # quick utilities
+#         if "today's date" in text or "day" in text:
+#             self.safe_speak(f"Today is {get_day_and_date()}")
+#             return True
+
+#         if "time now" in text or "what time" in text:
+#             self.safe_speak(f"Now it is {get_time()}")
+#             return True
+
+#         if "hello" in text or "hi " in text or text.strip() == "hi":
+#             self.safe_speak("Hi. I am Pico. How can I help you today?")
+#             return True
+
+#         return False
+
+#     # ------------- main conversation loop -------------
+#     def conversation_loop(self):
+#         self.safe_speak("Hi. I am Pico. What is on your mind?")
+#         while True:
+#             # 1) deliver one background result if free
+#             self._deliver_background_results_if_free()
+
+#             # 2) listen
+#             user_input = self.speech.listen()
+#             if not user_input:
+#                 continue
+
+#             # exit
+#             if any(w in user_input.lower() for w in ["bye", "goodbye", "exit", "stop talking"]):
+#                 self.safe_speak("It was nice talking with you. Say Hey Pico when you want me again.")
+#                 break
+
+#             # 3) detect and dispatch background commands
+#             dispatched = self._maybe_dispatch_command(user_input)
+
+#             # 4) foreground conversation only if no command was dispatched
+#             if not dispatched:
+#                 self.safe_speak("Let me think.")
+#                 response = [None]
+
+#                 def think():
+#                     try:
+#                         response[0] = self.conversation.generate(user_input)
+#                     except Exception as e:
+#                         response[0] = f"Sorry, I had trouble generating a reply: {e}"
+
+#                 t = threading.Thread(target=think, daemon=True)
+#                 t.start()
+#                 t.join(timeout=30)
+
+#                 final = response[0] or "I could not generate a proper reply this time"
+#                 print(f"Pico: {final}")
+#                 self.safe_speak(final)
+
+#             # 5) after speaking, deliver one background result if available
+#             self._deliver_background_results_if_free()
+
+#     # ------------- run / cleanup -------------
+#     def run(self):
+#         print("=== Pico AI Assistant ===")
+#         print("Initializing. Please wait.")
+#         self.safe_speak("Pico is ready. Say Hey Pico to wake me up.")
+#         while True:
+#             if self.wake.detect():
+#                 self.safe_speak("Yes. I am listening.")
+#                 self.conversation_loop()
+
+#     def cleanup(self):
+#         print("\nCleaning up resources.")
+#         try:
+#             self.wake.cleanup()
+#         except Exception as e:
+#             print(f"Cleanup error: {e}")
+
+
+
+
 import atexit
 import threading
 import time
@@ -1247,10 +1522,10 @@ class PicoAssistant:
     # -------- state callback bridge --------
     def _on_state_change(self, state: str):
         """Forward state changes to WS manager if available."""
-        print(f"Pico state callback: {state}")
         if self.ws_manager:
             try:
-                self.ws_manager.publish_state(state)
+                # normal state → always url=None
+                self.ws_manager.publish_state(state, url=None)
             except Exception as e:
                 print(f"Failed to publish state to WS manager: {e}")
 
@@ -1267,6 +1542,7 @@ class PicoAssistant:
         try:
             if platform.system() == "Windows":
                 os.startfile(path)
+                print(path)
             elif platform.system() == "Darwin":  # macOS
                 subprocess.run(["open", path])
             else:  # Linux
@@ -1356,10 +1632,16 @@ class PicoAssistant:
         if "show me the image" in text or "display image" in text:
             if self.last_image_path and os.path.exists(self.last_image_path):
                 self.safe_speak("Here is your last generated image.")
-                threading.Thread(
-                    target=lambda: self._show_image(self.last_image_path),
-                    daemon=True
-                ).start()
+
+                # send URL to frontend via websocket
+                if self.ws_manager:
+                    try:
+                        self.ws_manager.publish_state("show_image", url=self.last_image_path)
+                    except Exception as e:
+                        print(f"Failed to send image via WS: {e}")
+
+               
+
                 # After showing, handle reaction
                 self._handle_image_reaction()
             else:

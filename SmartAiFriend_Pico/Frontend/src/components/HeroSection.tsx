@@ -6,11 +6,11 @@
 //   const [isConversing, setIsConversing] = useState(false);
 //   const [titleHasBeenHidden, setTitleHasBeenHidden] = useState(false);
 //   const [audioLevels, setAudioLevels] = useState([0.3, 0.7, 0.5, 0.9, 0.4, 0.8, 0.2]);
-  
+
 //   // Typing animation states
 //   const [typedText, setTypedText] = useState('');
 //   const [isTyping, setIsTyping] = useState(false);
-  
+
 //   // Spline loading states
 //   const [splineLoaded, setSplineLoaded] = useState(false);
 //   const [splineError, setSplineError] = useState(false);
@@ -88,17 +88,17 @@
 //   // Audio visualization animation
 //   useEffect(() => {
 //     let animationFrame: number;
-    
+
 //     if (isListening || isConversing) {
 //       const animateAudio = () => {
-//         setAudioLevels(prev => 
+//         setAudioLevels(prev =>
 //           prev.map(() => Math.random() * 0.8 + 0.2)
 //         );
 //         animationFrame = requestAnimationFrame(animateAudio);
 //       };
 //       animateAudio();
 //     }
-    
+
 //     return () => {
 //       if (animationFrame) {
 //         cancelAnimationFrame(animationFrame);
@@ -132,17 +132,17 @@
 //           border-top: 12px solid rgba(128, 0, 255, 0.3);
 //           filter: drop-shadow(0 2px 4px rgba(128, 0, 255, 0.2));
 //         }
-        
+
 //         .speech-bubble-cyan::after {
 //           border-top-color: rgba(0, 255, 255, 0.25);
 //           filter: drop-shadow(0 2px 4px rgba(0, 255, 255, 0.2));
 //         }
-        
+
 //         .speech-bubble {
 //           position: relative;
 //           animation: speechBubbleFloat 3s ease-in-out infinite;
 //         }
-        
+
 //         @keyframes speechBubbleFloat {
 //           0%, 100% { transform: translateY(0px) scale(1); }
 //           50% { transform: translateY(-3px) scale(1.02); }
@@ -229,13 +229,13 @@
 //         }
 //       `}</style>
 
-//       <section 
+//       <section
 //         className={`fixed inset-0 w-screen h-screen flex items-center justify-center overflow-hidden animated-bg transition-all duration-1000 select-none cursor-none ${
-//           isListening || isConversing 
-//             ? 'brightness-110 contrast-110' 
+//           isListening || isConversing
+//             ? 'brightness-110 contrast-110'
 //             : 'brightness-100'
-//         }`} 
-//         style={{ 
+//         }`}
+//         style={{
 //           transformOrigin: 'center center',
 //           maxWidth: '100vw',
 //           maxHeight: '100vh',
@@ -271,7 +271,7 @@
 //                  cursor: 'none'
 //                }}>
 //           </div>
-          
+
 //           {/* Data streams */}
 //           <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none">
 //             {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 6 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 8 : 10)].map((_, i) => (
@@ -292,15 +292,15 @@
 //               />
 //             ))}
 //           </div>
-          
+
 //           {/* Geometric shapes */}
 //           <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none">
 //             {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 3 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 4 : 6)].map((_, i) => (
 //               <div
 //                 key={`geo-${i}`}
 //                 className={`absolute border overflow-hidden select-none pointer-events-none transition-all duration-700 ${
-//                   isListening || isConversing 
-//                     ? 'border-neon-purple/40 animate-pulse' 
+//                   isListening || isConversing
+//                     ? 'border-neon-purple/40 animate-pulse'
 //                     : 'border-neon-purple/20'
 //                 }`}
 //                 style={{
@@ -322,26 +322,26 @@
 //           </div>
 //         </div>
 
-//         <div className={`w-full h-full max-w-full max-h-full px-3 sm:px-4 md:px-6 lg:px-8 text-center relative z-10 transition-all duration-1000 flex flex-col justify-center items-center overflow-hidden`} 
-//              style={{ 
+//         <div className={`w-full h-full max-w-full max-h-full px-3 sm:px-4 md:px-6 lg:px-8 text-center relative z-10 transition-all duration-1000 flex flex-col justify-center items-center overflow-hidden`}
+//              style={{
 //                transformOrigin: 'center center'
 //              }}>
-          
+
 //           {/* Title - PERMANENTLY HIDDEN after first conversation */}
 //           {!titleHasBeenHidden && (
 //             <div className={`animate-fade-in-up transition-all duration-1000 mb-1 sm:mb-2 md:mb-3 overflow-hidden select-none ${
 //               isListening ? 'text-glow-enhanced' : ''
 //             } ${isConversing ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}
-//                  style={{ 
+//                  style={{
 //                    userSelect: 'none',
 //                    WebkitUserSelect: 'none',
 //                    cursor: 'default'
 //                  }}>
 //               <h1 className={`cyber-font text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-all duration-700 overflow-hidden select-none ${
-//                 isListening 
-//                   ? 'text-glow-enhanced' 
+//                 isListening
+//                   ? 'text-glow-enhanced'
 //                   : 'text-glow'
-//               }`} style={{ 
+//               }`} style={{
 //                 transformOrigin: 'center center',
 //                 userSelect: 'none',
 //                 WebkitUserSelect: 'none',
@@ -358,21 +358,21 @@
 //               isConversing ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-0'
 //             }`}>
 //               <div className={`speech-bubble ${!isConversing ? 'speech-bubble-cyan' : ''} bg-gradient-to-r backdrop-blur-sm rounded-2xl p-4 sm:p-5 md:p-6 border max-w-lg mx-auto transition-all duration-700 overflow-hidden ${
-//                 isConversing 
-//                   ? 'from-neon-purple/20 to-neon-blue/20 border-neon-purple/40 shadow-lg' 
+//                 isConversing
+//                   ? 'from-neon-purple/20 to-neon-blue/20 border-neon-purple/40 shadow-lg'
 //                   : 'from-neon-cyan/15 to-neon-blue/15 border-neon-cyan/35 shadow-md'
 //               }`}
-//               style={{ 
+//               style={{
 //                 cursor: 'default',
-//                 boxShadow: isConversing 
-//                   ? '0 8px 32px rgba(128, 0, 255, 0.3), 0 0 20px rgba(128, 0, 255, 0.2)' 
+//                 boxShadow: isConversing
+//                   ? '0 8px 32px rgba(128, 0, 255, 0.3), 0 0 20px rgba(128, 0, 255, 0.2)'
 //                   : '0 8px 32px rgba(0, 255, 255, 0.25), 0 0 20px rgba(0, 255, 255, 0.15)'
 //               }}>
 //                 {isConversing ? (
 //                   <div className="select-none">
 //                     {/* TYPING ANIMATION TEXT - ONLY THIS IS SELECTABLE */}
 //                     <p className="text-sm sm:text-base font-orbitron text-neon-purple/95 leading-relaxed overflow-hidden select-text font-medium"
-//                        style={{ 
+//                        style={{
 //                          cursor: 'text',
 //                          userSelect: 'text',
 //                          WebkitUserSelect: 'text',
@@ -389,7 +389,7 @@
 //                   <div className="select-none">
 //                     {/* PICO'S READY MESSAGE - STYLED AS SPEECH BUBBLE */}
 //                     <p className="text-sm sm:text-base font-orbitron text-neon-cyan/95 leading-relaxed overflow-hidden select-text font-medium"
-//                        style={{ 
+//                        style={{
 //                          cursor: 'text',
 //                          userSelect: 'text',
 //                          WebkitUserSelect: 'text',
@@ -407,7 +407,7 @@
 //           {/* Robot Avatar Container - BIGGER SIZE */}
 //           <div className={`relative mb-1 sm:mb-2 md:mb-3 overflow-visible select-none ${
 //             isConversing ? 'scale-105' : titleHasBeenHidden ? 'scale-102' : 'scale-100'
-//           }`} style={{ 
+//           }`} style={{
 //             width: '850px',
 //             height: '800px',
 //             maxWidth: '95vw',
@@ -416,10 +416,10 @@
 //             transformOrigin: 'center center',
 //             transition: 'transform 0.3s ease'
 //           }}>
-            
+
 //             {/* Animated Background Layer Behind Spline Scene */}
 //             {(isListening || isConversing) && (
-//               <div 
+//               <div
 //                 className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
 //                 style={{
 //                   background: `radial-gradient(circle at center, rgba(${isConversing ? '128, 0, 255' : '0, 255, 255'}, 0.15), transparent 70%)`,
@@ -450,7 +450,7 @@
 //                       cursor: 'none'
 //                     }}
 //                   >
-//                     {isConversing 
+//                     {isConversing
 //                       ? ['TALK', 'CHAT', 'CONV', 'RESP', 'WORD', 'SPEAK'][i] || 'AI'
 //                       : [][i] || ""
 //                     }
@@ -458,7 +458,7 @@
 //                 ))}
 //               </div>
 //             )}
-            
+
 //             {/* Spline 3D Robot Scene with iframe - BIGGER */}
 //             <div className="relative z-10 w-full h-full">
 //               {!splineError ? (
@@ -479,7 +479,7 @@
 //                     onError={onSplineError}
 //                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 //                   />
-                  
+
 //                   {/* Loading indicator */}
 //                   {!splineLoaded && (
 //                     <div className="absolute inset-0 flex items-center justify-center bg-transparent">
@@ -498,11 +498,11 @@
 //                 </div>
 //               )}
 //             </div>
-            
+
 //             {/* Audio Wave Visualization */}
 //             {(isListening || isConversing) && (
-//               <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2 overflow-hidden select-none pointer-events-none z-20" 
-//                    style={{ 
+//               <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2 overflow-hidden select-none pointer-events-none z-20"
+//                    style={{
 //                      perspective: '200px',
 //                      maxWidth: '200px'
 //                    }}>
@@ -511,8 +511,8 @@
 //                     <div
 //                       key={index}
 //                       className={`rounded-full transition-all duration-100 overflow-hidden select-none pointer-events-none ${
-//                         isConversing 
-//                           ? 'bg-gradient-to-t from-neon-purple via-neon-blue to-neon-cyan' 
+//                         isConversing
+//                           ? 'bg-gradient-to-t from-neon-purple via-neon-blue to-neon-cyan'
 //                           : 'bg-gradient-to-t from-neon-cyan via-neon-blue to-neon-purple'
 //                       }`}
 //                       style={{
@@ -533,7 +533,7 @@
 //           {/* Status Indicator - MOVED DOWN */}
 //           <div className={`flex items-center justify-center space-x-2 animate-fade-in-up transition-all duration-500 overflow-hidden select-none ${
 //             isListening || isConversing ? 'scale-102 sm:scale-105' : 'scale-100'
-//           }`} style={{ 
+//           }`} style={{
 //             animationDelay: '0.9s',
 //             cursor: 'default',
 //             transform: 'translateY(20px)',
@@ -556,15 +556,6 @@
 //     </>
 //   );
 // };
-
-
-
-
-
-
-
-
-
 
 // import { useState, useEffect, useRef, useCallback } from 'react';
 // import { Button } from '@/components/ui/button';
@@ -591,13 +582,13 @@
 //   const [isConversing, setIsConversing] = useState(false);
 //   const [titleHasBeenHidden, setTitleHasBeenHidden] = useState(false);
 //   const [audioLevels, setAudioLevels] = useState([0.3, 0.7, 0.5, 0.9, 0.4, 0.8, 0.2]);
-  
+
 //   // WebSocket and dynamic text states
 //   const [typedText, setTypedText] = useState('');
 //   const [isTyping, setIsTyping] = useState(false);
 //   const [fullText, setFullText] = useState("Hello! I'm Pico. How can I assist you today?");
 //   const [picoData, setPicoData] = useState<PicoMessage | null>(null);
-  
+
 //   // Connection management states
 //   const [connectionState, setConnectionState] = useState<ConnectionState>({
 //     isConnected: false,
@@ -605,17 +596,17 @@
 //     error: null,
 //     reconnectAttempts: 0
 //   });
-  
+
 //   // Spline loading states
 //   const [splineLoaded, setSplineLoaded] = useState(false);
 //   const [splineError, setSplineError] = useState(false);
-  
+
 //   // WebSocket refs and constants
 //   const ws = useRef<WebSocket | null>(null);
 //   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 //   const heartbeatIntervalRef = useRef<NodeJS.Timeout | null>(null);
 //   const isUnmountedRef = useRef(false);
-  
+
 //   const WS_URL = 'ws://localhost:8000/ws';
 //   const MAX_RECONNECT_ATTEMPTS = 5;
 //   const HEARTBEAT_INTERVAL = 30000; // 30 seconds
@@ -627,18 +618,18 @@
 //       clearTimeout(reconnectTimeoutRef.current);
 //       reconnectTimeoutRef.current = null;
 //     }
-    
+
 //     if (heartbeatIntervalRef.current) {
 //       clearInterval(heartbeatIntervalRef.current);
 //       heartbeatIntervalRef.current = null;
 //     }
-    
+
 //     if (ws.current) {
 //       ws.current.onopen = null;
 //       ws.current.onmessage = null;
 //       ws.current.onclose = null;
 //       ws.current.onerror = null;
-      
+
 //       if (ws.current.readyState === WebSocket.OPEN) {
 //         ws.current.close();
 //       }
@@ -665,7 +656,7 @@
 //     if (heartbeatIntervalRef.current) {
 //       clearInterval(heartbeatIntervalRef.current);
 //     }
-    
+
 //     heartbeatIntervalRef.current = setInterval(() => {
 //       if (!sendMessage({ type: 'ping' })) {
 //         console.log('Heartbeat failed, connection may be lost');
@@ -676,25 +667,25 @@
 //   // Connect to WebSocket with reconnection logic
 //   const connectWebSocket = useCallback(() => {
 //     if (isUnmountedRef.current) return;
-    
+
 //     // Don't attempt if we're already connected or connecting
 //     if (connectionState.isConnected || connectionState.isConnecting) return;
 
-//     setConnectionState(prev => ({ 
-//       ...prev, 
-//       isConnecting: true, 
-//       error: null 
+//     setConnectionState(prev => ({
+//       ...prev,
+//       isConnecting: true,
+//       error: null
 //     }));
 
 //     try {
 //       cleanup(); // Clean up any existing connection
-      
+
 //       console.log(`Connecting to Pico backend: ${WS_URL}`);
 //       ws.current = new WebSocket(WS_URL);
 
 //       ws.current.onopen = () => {
 //         if (isUnmountedRef.current) return;
-        
+
 //         console.log('Connected to Pico backend');
 //         setConnectionState({
 //           isConnected: true,
@@ -702,16 +693,16 @@
 //           error: null,
 //           reconnectAttempts: 0
 //         });
-        
+
 //         startHeartbeat();
-        
+
 //         // Request initial greeting
 //         sendMessage({ action: 'request_greeting' });
 //       };
 
 //       ws.current.onmessage = (event) => {
 //         if (isUnmountedRef.current) return;
-        
+
 //         try {
 //           const data = JSON.parse(event.data);
 //           console.log('Received from Pico:', data);
@@ -724,9 +715,9 @@
 //             console.log('Heartbeat response received');
 //           } else if (data.type === 'error') {
 //             console.error('Server error:', data.error);
-//             setConnectionState(prev => ({ 
-//               ...prev, 
-//               error: data.error || 'Unknown server error' 
+//             setConnectionState(prev => ({
+//               ...prev,
+//               error: data.error || 'Unknown server error'
 //             }));
 //           } else if (data.event === 'state') {
 //             const v = data.value;
@@ -755,9 +746,9 @@
 
 //       ws.current.onclose = (event) => {
 //         if (isUnmountedRef.current) return;
-        
+
 //         console.log(`WebSocket connection closed. Code: ${event.code}, Reason: ${event.reason}`);
-        
+
 //         setConnectionState(prev => ({
 //           ...prev,
 //           isConnected: false,
@@ -773,14 +764,14 @@
 //         // Attempt reconnection if not intentionally closed
 //         if (event.code !== 1000 && connectionState.reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
 //           const delay = RECONNECT_INTERVALS[Math.min(connectionState.reconnectAttempts, RECONNECT_INTERVALS.length - 1)];
-          
-//           setConnectionState(prev => ({ 
-//             ...prev, 
-//             reconnectAttempts: prev.reconnectAttempts + 1 
+
+//           setConnectionState(prev => ({
+//             ...prev,
+//             reconnectAttempts: prev.reconnectAttempts + 1
 //           }));
 
 //           console.log(`Reconnecting in ${delay}ms... (Attempt ${connectionState.reconnectAttempts + 1}/${MAX_RECONNECT_ATTEMPTS})`);
-          
+
 //           reconnectTimeoutRef.current = setTimeout(() => {
 //             connectWebSocket();
 //           }, delay);
@@ -789,21 +780,21 @@
 
 //       ws.current.onerror = (error) => {
 //         if (isUnmountedRef.current) return;
-        
+
 //         console.error('WebSocket error:', error);
-//         setConnectionState(prev => ({ 
-//           ...prev, 
+//         setConnectionState(prev => ({
+//           ...prev,
 //           isConnecting: false,
-//           error: 'Connection failed' 
+//           error: 'Connection failed'
 //         }));
 //       };
 
 //     } catch (error) {
 //       console.error('Failed to create WebSocket connection:', error);
-//       setConnectionState(prev => ({ 
-//         ...prev, 
+//       setConnectionState(prev => ({
+//         ...prev,
 //         isConnecting: false,
-//         error: 'Failed to create connection' 
+//         error: 'Failed to create connection'
 //       }));
 //     }
 //   }, [connectionState.isConnected, connectionState.isConnecting, connectionState.reconnectAttempts, cleanup, startHeartbeat, sendMessage]);
@@ -811,7 +802,7 @@
 //   // Start conversation animation
 //   const startConversationAnimation = useCallback(() => {
 //     setIsListening(true);
-    
+
 //     setTimeout(() => {
 //       setIsConversing(true);
 //       if (!titleHasBeenHidden) {
@@ -819,7 +810,7 @@
 //       }
 //       setIsTyping(true);
 //       setTypedText('');
-      
+
 //       setTimeout(() => {
 //         setIsConversing(false);
 //         setIsListening(false);
@@ -889,17 +880,17 @@
 //   // Audio level animation
 //   useEffect(() => {
 //     let animationFrame: number;
-    
+
 //     if (isListening || isConversing) {
 //       const animateAudio = () => {
-//         setAudioLevels(prev => 
+//         setAudioLevels(prev =>
 //           prev.map(() => Math.random() * 0.8 + 0.2)
 //         );
 //         animationFrame = requestAnimationFrame(animateAudio);
 //       };
 //       animateAudio();
 //     }
-    
+
 //     return () => {
 //       if (animationFrame) {
 //         cancelAnimationFrame(animationFrame);
@@ -934,17 +925,17 @@
 //           border-top: 12px solid rgba(128, 0, 255, 0.3);
 //           filter: drop-shadow(0 2px 4px rgba(128, 0, 255, 0.2));
 //         }
-        
+
 //         .speech-bubble-cyan::after {
 //           border-top-color: rgba(0, 255, 255, 0.25);
 //           filter: drop-shadow(0 2px 4px rgba(0, 255, 255, 0.2));
 //         }
-        
+
 //         .speech-bubble {
 //           position: relative;
 //           animation: speechBubbleFloat 3s ease-in-out infinite;
 //         }
-        
+
 //         @keyframes speechBubbleFloat {
 //           0%, 100% { transform: translateY(0px) scale(1); }
 //           50% { transform: translateY(-3px) scale(1.02); }
@@ -957,7 +948,7 @@
 //           text-transform: uppercase;
 //           font-style: normal;
 //         }
-        
+
 //         /* Connection status indicators */
 //         .connection-status {
 //           position: fixed;
@@ -975,14 +966,14 @@
 //           text-transform: uppercase;
 //           letter-spacing: 0.5px;
 //         }
-        
+
 //         .status-connected {
 //           background: rgba(0, 255, 0, 0.15);
 //           border-color: rgba(0, 255, 0, 0.4);
 //           color: rgba(0, 255, 0, 0.9);
 //           text-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
 //         }
-        
+
 //         .status-connecting {
 //           background: rgba(255, 255, 0, 0.15);
 //           border-color: rgba(255, 255, 0, 0.4);
@@ -990,19 +981,19 @@
 //           text-shadow: 0 0 8px rgba(255, 255, 0, 0.3);
 //           animation: pulse 2s ease-in-out infinite;
 //         }
-        
+
 //         .status-error {
 //           background: rgba(255, 100, 100, 0.15);
 //           border-color: rgba(255, 100, 100, 0.4);
 //           color: rgba(255, 100, 100, 0.9);
 //           text-shadow: 0 0 8px rgba(255, 100, 100, 0.3);
 //         }
-        
+
 //         @keyframes pulse {
 //           0%, 100% { opacity: 1; }
 //           50% { opacity: 0.6; }
 //         }
-        
+
 //         .refresh-button {
 //           position: fixed;
 //           bottom: 30px;
@@ -1022,7 +1013,7 @@
 //           transition: all 0.3s ease;
 //           backdrop-filter: blur(10px);
 //         }
-        
+
 //         .refresh-button:hover {
 //           background: rgba(0, 255, 255, 0.2);
 //           border-color: rgba(0, 255, 255, 0.5);
@@ -1042,13 +1033,13 @@
 //          connectionState.isConnected ? '● PICO ONLINE' : '◌ OFFLINE'}
 //       </div>
 
-//       <section 
+//       <section
 //         className={`fixed inset-0 w-screen h-screen flex items-center justify-center overflow-hidden animated-bg transition-all duration-1000 select-none cursor-none ${
-//           isListening || isConversing 
-//             ? 'brightness-110 contrast-110' 
+//           isListening || isConversing
+//             ? 'brightness-110 contrast-110'
 //             : 'brightness-100'
-//         }`} 
-//         style={{ 
+//         }`}
+//         style={{
 //           transformOrigin: 'center center',
 //           maxWidth: '100vw',
 //           maxHeight: '100vh',
@@ -1084,7 +1075,7 @@
 //                  cursor: 'none'
 //                }}>
 //           </div>
-          
+
 //           {/* Data streams */}
 //           <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none">
 //             {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 6 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 8 : 10)].map((_, i) => (
@@ -1105,15 +1096,15 @@
 //               />
 //             ))}
 //           </div>
-          
+
 //           {/* Geometric shapes */}
 //           <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none">
 //             {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 3 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 4 : 6)].map((_, i) => (
 //               <div
 //                 key={`geo-${i}`}
 //                 className={`absolute border overflow-hidden select-none pointer-events-none transition-all duration-700 ${
-//                   isListening || isConversing 
-//                     ? 'border-neon-purple/40 animate-pulse' 
+//                   isListening || isConversing
+//                     ? 'border-neon-purple/40 animate-pulse'
 //                     : 'border-neon-purple/20'
 //                 }`}
 //                 style={{
@@ -1135,26 +1126,26 @@
 //           </div>
 //         </div>
 
-//         <div className={`w-full h-full max-w-full max-h-full px-3 sm:px-4 md:px-6 lg:px-8 text-center relative z-10 transition-all duration-1000 flex flex-col justify-center items-center overflow-hidden`} 
-//              style={{ 
+//         <div className={`w-full h-full max-w-full max-h-full px-3 sm:px-4 md:px-6 lg:px-8 text-center relative z-10 transition-all duration-1000 flex flex-col justify-center items-center overflow-hidden`}
+//              style={{
 //                transformOrigin: 'center center'
 //              }}>
-          
+
 //           {/* Title - PERMANENTLY HIDDEN after first conversation */}
 //           {!titleHasBeenHidden && (
 //             <div className={`animate-fade-in-up transition-all duration-1000 mb-1 sm:mb-2 md:mb-3 overflow-hidden select-none ${
 //               isListening ? 'text-glow-enhanced' : ''
 //             } ${isConversing ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}
-//                  style={{ 
+//                  style={{
 //                    userSelect: 'none',
 //                    WebkitUserSelect: 'none',
 //                    cursor: 'default'
 //                  }}>
 //               <h1 className={`cyber-font text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-all duration-700 overflow-hidden select-none ${
-//                 isListening 
-//                   ? 'text-glow-enhanced' 
+//                 isListening
+//                   ? 'text-glow-enhanced'
 //                   : 'text-glow'
-//               }`} style={{ 
+//               }`} style={{
 //                 transformOrigin: 'center center',
 //                 userSelect: 'none',
 //                 WebkitUserSelect: 'none',
@@ -1171,21 +1162,21 @@
 //               isConversing ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-0'
 //             }`}>
 //               <div className={`speech-bubble ${!isConversing ? 'speech-bubble-cyan' : ''} bg-gradient-to-r backdrop-blur-sm rounded-2xl p-4 sm:p-5 md:p-6 border max-w-lg mx-auto transition-all duration-700 overflow-hidden ${
-//                 isConversing 
-//                   ? 'from-neon-purple/20 to-neon-blue/20 border-neon-purple/40 shadow-lg' 
+//                 isConversing
+//                   ? 'from-neon-purple/20 to-neon-blue/20 border-neon-purple/40 shadow-lg'
 //                   : 'from-neon-cyan/15 to-neon-blue/15 border-neon-cyan/35 shadow-md'
 //               }`}
-//               style={{ 
+//               style={{
 //                 cursor: 'default',
-//                 boxShadow: isConversing 
-//                   ? '0 8px 32px rgba(128, 0, 255, 0.3), 0 0 20px rgba(128, 0, 255, 0.2)' 
+//                 boxShadow: isConversing
+//                   ? '0 8px 32px rgba(128, 0, 255, 0.3), 0 0 20px rgba(128, 0, 255, 0.2)'
 //                   : '0 8px 32px rgba(0, 255, 255, 0.25), 0 0 20px rgba(0, 255, 255, 0.15)'
 //               }}>
 //                 {isConversing ? (
 //                   <div className="select-none">
 //                     {/* TYPING ANIMATION TEXT FROM BACKEND */}
 //                     <p className="text-sm sm:text-base font-orbitron text-neon-purple/95 leading-relaxed overflow-hidden select-text font-medium"
-//                        style={{ 
+//                        style={{
 //                          cursor: 'text',
 //                          userSelect: 'text',
 //                          WebkitUserSelect: 'text',
@@ -1197,7 +1188,7 @@
 //                         <span className="animate-pulse text-neon-purple ml-1">|</span>
 //                       )}"
 //                     </p>
-                    
+
 //                     {/* Show backend metadata */}
 //                     {picoData && (picoData.mood || picoData.user_count) && (
 //                       <div className="mt-2 text-xs text-neon-purple/60 font-mono">
@@ -1211,16 +1202,16 @@
 //                   <div className="select-none">
 //                     {/* READY MESSAGE WITH DYNAMIC GREETING */}
 //                     <p className="text-sm sm:text-base font-orbitron text-neon-cyan/95 leading-relaxed overflow-hidden select-text font-medium"
-//                        style={{ 
+//                        style={{
 //                          cursor: 'text',
 //                          userSelect: 'text',
 //                          WebkitUserSelect: 'text',
 //                          MozUserSelect: 'text',
 //                          textShadow: '0 0 10px rgba(0, 255, 255, 0.3)'
 //                        }}>
-//                       {picoData?.time_greeting 
-//                         ? `${picoData.time_greeting} Ready for your next question...` 
-//                         : connectionState.isConnected 
+//                       {picoData?.time_greeting
+//                         ? `${picoData.time_greeting} Ready for your next question...`
+//                         : connectionState.isConnected
 //                           ? '"Ready for your next question..."'
 //                           : '"Establishing connection..."'
 //                       }
@@ -1234,7 +1225,7 @@
 //           {/* Robot Avatar Container - BIGGER SIZE */}
 //           <div className={`relative mb-1 sm:mb-2 md:mb-3 overflow-visible select-none ${
 //             isConversing ? 'scale-105' : titleHasBeenHidden ? 'scale-102' : 'scale-100'
-//           }`} style={{ 
+//           }`} style={{
 //             width: '850px',
 //             height: '800px',
 //             maxWidth: '95vw',
@@ -1243,10 +1234,10 @@
 //             transformOrigin: 'center center',
 //             transition: 'transform 0.3s ease'
 //           }}>
-            
+
 //             {/* Animated Background Layer Behind Spline Scene */}
 //             {(isListening || isConversing) && (
-//               <div 
+//               <div
 //                 className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
 //                 style={{
 //                   background: `radial-gradient(circle at center, rgba(${isConversing ? '128, 0, 255' : '0, 255, 255'}, 0.15), transparent 70%)`,
@@ -1277,7 +1268,7 @@
 //                       cursor: 'none'
 //                     }}
 //                   >
-//                     {isConversing 
+//                     {isConversing
 //                       ? ['TALK', 'CHAT', 'CONV', 'RESP', 'WORD', 'SPEAK'][i] || 'AI'
 //                       : ""
 //                     }
@@ -1285,7 +1276,7 @@
 //                 ))}
 //               </div>
 //             )}
-            
+
 //             {/* Spline 3D Robot Scene with iframe - BIGGER */}
 //             <div className="relative z-10 w-full h-full">
 //               {!splineError ? (
@@ -1306,7 +1297,7 @@
 //                     onError={onSplineError}
 //                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 //                   />
-                  
+
 //                   {/* Loading indicator */}
 //                   {!splineLoaded && (
 //                     <div className="absolute inset-0 flex items-center justify-center bg-transparent">
@@ -1325,11 +1316,11 @@
 //                 </div>
 //               )}
 //             </div>
-            
+
 //             {/* Audio Wave Visualization */}
 //             {(isListening || isConversing) && (
-//               <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2 overflow-hidden select-none pointer-events-none z-20" 
-//                    style={{ 
+//               <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2 overflow-hidden select-none pointer-events-none z-20"
+//                    style={{
 //                      perspective: '200px',
 //                      maxWidth: '200px'
 //                    }}>
@@ -1338,8 +1329,8 @@
 //                     <div
 //                       key={index}
 //                       className={`rounded-full transition-all duration-100 overflow-hidden select-none pointer-events-none ${
-//                         isConversing 
-//                           ? 'bg-gradient-to-t from-neon-purple via-neon-blue to-neon-cyan' 
+//                         isConversing
+//                           ? 'bg-gradient-to-t from-neon-purple via-neon-blue to-neon-cyan'
 //                           : 'bg-gradient-to-t from-neon-cyan via-neon-blue to-neon-purple'
 //                       }`}
 //                       style={{
@@ -1360,7 +1351,7 @@
 //           {/* Status Indicator - Enhanced with Connection Info */}
 //           <div className={`flex items-center justify-center space-x-2 animate-fade-in-up transition-all duration-500 overflow-hidden select-none ${
 //             isListening || isConversing ? 'scale-102 sm:scale-105' : 'scale-100'
-//           }`} style={{ 
+//           }`} style={{
 //             animationDelay: '0.9s',
 //             cursor: 'default',
 //             transform: 'translateY(20px)',
@@ -1368,19 +1359,19 @@
 //           }}>
 //             <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-500 overflow-hidden select-none ${
 //               isConversing ? 'bg-neon-purple pulse-glow-enhanced' :
-//               isListening ? 'bg-neon-cyan pulse-glow-enhanced' : 
+//               isListening ? 'bg-neon-cyan pulse-glow-enhanced' :
 //               connectionState.isConnected ? 'bg-neon-cyan pulse-glow' :
 //               connectionState.isConnecting ? 'bg-yellow-400 pulse-glow' : 'bg-red-400 pulse-glow'
 //             }`}></div>
 //             <span className={`text-xs sm:text-sm font-orbitron transition-all duration-500 overflow-hidden select-none ${
 //               isConversing ? 'text-neon-purple font-bold' :
-//               isListening ? 'text-neon-cyan font-bold' : 
+//               isListening ? 'text-neon-cyan font-bold' :
 //               connectionState.isConnected ? 'text-neon-cyan' :
 //               connectionState.isConnecting ? 'text-yellow-400' : 'text-red-400'
 //             }`}
 //             style={{ cursor: 'default' }}>
-//               {isConversing ? 'Pico Speaking...' : 
-//                isListening ? 'Pico Listening...' : 
+//               {isConversing ? 'Pico Speaking...' :
+//                isListening ? 'Pico Listening...' :
 //                connectionState.isConnected ? 'Pico System Online' :
 //                connectionState.isConnecting ? 'Connecting to Pico...' :
 //                connectionState.error ? `Connection Error: ${connectionState.error}` : 'Pico Offline'}
@@ -1391,7 +1382,7 @@
 
 //       {/* Manual Refresh Button (only show when connected) */}
 //       {connectionState.isConnected && (
-//         <button 
+//         <button
 //           onClick={requestNewGreeting}
 //           className="refresh-button"
 //           title="Request new greeting from Pico"
@@ -1403,10 +1394,1408 @@
 //   );
 // };
 
+// import { useState, useEffect, useRef, useCallback } from 'react';
+// import { Button } from '@/components/ui/button';
 
+// interface PicoMessage {
+//   type: string;
+//   text: string;
+//   time_greeting?: string;
+//   timestamp?: string;
+//   mood?: string;
+//   user_count?: number;
+//   error?: string;
+// }
 
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { Button } from '@/components/ui/button';
+// interface ConnectionState {
+//   isConnected: boolean;
+//   isConnecting: boolean;
+//   error: string | null;
+//   reconnectAttempts: number;
+// }
+
+// export const HeroSection = () => {
+//   const [isListening, setIsListening] = useState(false);
+//   const [isConversing, setIsConversing] = useState(false);
+//   const [titleHasBeenHidden, setTitleHasBeenHidden] = useState(false);
+//   const [audioLevels, setAudioLevels] = useState([0.3, 0.7, 0.5, 0.9, 0.4, 0.8, 0.2]);
+
+//   // WebSocket and dynamic text states
+//   const [typedText, setTypedText] = useState('');
+//   const [isTyping, setIsTyping] = useState(false);
+//   const [fullText, setFullText] = useState("Hello! I'm Pico. How can I assist you today?");
+//   const [picoData, setPicoData] = useState<PicoMessage | null>(null);
+
+//   // Image animation states
+//   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
+//   const [showImage, setShowImage] = useState(false);
+//   const [imageAnimationState, setImageAnimationState] = useState<'entering' | 'visible' | 'exiting' | 'hidden'>('hidden');
+//   const [demoImageStartTime, setDemoImageStartTime] = useState<number | null>(null); // Track when demo image was shown
+//   const imageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+//   const exitTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+//   // Connection management states
+//   const [connectionState, setConnectionState] = useState<ConnectionState>({
+//     isConnected: false,
+//     isConnecting: false,
+//     error: null,
+//     reconnectAttempts: 0
+//   });
+
+//   // Spline loading states
+//   const [splineLoaded, setSplineLoaded] = useState(false);
+//   const [splineError, setSplineError] = useState(false);
+//   const [imageUrl, setImageUrl] = useState<string | null>(null);
+//   // WebSocket refs and constants
+//   const ws = useRef<WebSocket | null>(null);
+//   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+//   const heartbeatIntervalRef = useRef<NodeJS.Timeout | null>(null);
+//   const isUnmountedRef = useRef(false);
+
+//   const WS_URL = 'ws://localhost:8000/ws';
+//   const MAX_RECONNECT_ATTEMPTS = 5;
+//   const HEARTBEAT_INTERVAL = 30000; // 30 seconds
+//   const RECONNECT_INTERVALS = [1000, 2000, 4000, 8000, 16000]; // Exponential backoff
+
+//   // Cleanup function
+//   const cleanup = useCallback(() => {
+//     if (reconnectTimeoutRef.current) {
+//       clearTimeout(reconnectTimeoutRef.current);
+//       reconnectTimeoutRef.current = null;
+//     }
+
+//     if (heartbeatIntervalRef.current) {
+//       clearInterval(heartbeatIntervalRef.current);
+//       heartbeatIntervalRef.current = null;
+//     }
+
+//     if (ws.current) {
+//       ws.current.onopen = null;
+//       ws.current.onmessage = null;
+//       ws.current.onclose = null;
+//       ws.current.onerror = null;
+
+//       if (ws.current.readyState === WebSocket.OPEN) {
+//         ws.current.close();
+//       }
+//       ws.current = null;
+//     }
+//   }, []);
+
+//   // Send message to WebSocket
+//   const sendMessage = useCallback((message: object) => {
+//     if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+//       try {
+//         ws.current.send(JSON.stringify(message));
+//         return true;
+//       } catch (error) {
+//         console.error('Failed to send WebSocket message:', error);
+//         return false;
+//       }
+//     }
+//     return false;
+//   }, []);
+
+// // Download image function
+//   const downloadImage = useCallback(async (imageUrl: string, filename: string) => {
+//     try {
+//       const response = await fetch(imageUrl);
+//       const blob = await response.blob();
+//       const url = window.URL.createObjectURL(blob);
+//       const a = document.createElement('a');
+//       a.href = url;
+//       a.download = filename;
+//       document.body.appendChild(a);
+//       a.click();
+//       window.URL.revokeObjectURL(url);
+//       document.body.removeChild(a);
+//     } catch (error) {
+//       console.error('Failed to download image:', error);
+//     }
+//   }, []);
+
+//   // FIXED: Show animated image with proper timeout cleanup and exit animation
+//   const showAnimatedImage = useCallback((imageUrl: string) => {
+//     console.log('Starting image animation');
+
+//     // Clear any existing timeouts
+//     if (imageTimeoutRef.current) {
+//       clearTimeout(imageTimeoutRef.current);
+//       imageTimeoutRef.current = null;
+//     }
+//     if (exitTimeoutRef.current) {
+//       clearTimeout(exitTimeoutRef.current);
+//       exitTimeoutRef.current = null;
+//     }
+
+//     // Set initial states
+//     setGeneratedImage(imageUrl);
+//     setShowImage(true);
+//     setImageAnimationState('entering');
+//     setDemoImageStartTime(Date.now()); // Record when the image was shown
+
+//     // After entry animation completes (2s), set to visible
+//     setTimeout(() => {
+//       console.log('Image visible, starting 10s timer');
+//       setImageAnimationState('visible');
+
+//       // After 10 seconds visible, start exit animation
+//       imageTimeoutRef.current = setTimeout(() => {
+//         console.log('Starting exit animation');
+//         setImageAnimationState('exiting');
+
+//         // After exit animation completes (2s), hide completely
+//         exitTimeoutRef.current = setTimeout(() => {
+//           console.log('Hiding image completely');
+//           setShowImage(false);
+//           setGeneratedImage(null);
+//           setImageAnimationState('hidden');
+//           setDemoImageStartTime(null); // Reset the timer
+//         }, 2000); // Exit animation duration
+//       }, 10000); // 10 seconds visible time
+//     }, 2000); // Entry animation duration
+//   }, []);
+
+//   // Demo function to test image animation
+//   const triggerDemoImage = useCallback(() => {
+//     const demoImageUrl = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face';
+//     showAnimatedImage(demoImageUrl);
+//   }, [showAnimatedImage]);
+
+//   // Effect to hide image after 10 seconds from demo button click
+//   useEffect(() => {
+//     if (demoImageStartTime) {
+//       const timeSinceDemo = Date.now() - demoImageStartTime;
+//       const timeRemaining = Math.max(0, 10000 - timeSinceDemo); // Hide after 10 seconds from click
+
+//       const timer = setTimeout(() => {
+//         console.log('Hiding demo image after 10 seconds from click');
+//         setImageAnimationState('exiting');
+
+//         // After exit animation completes (2s), hide completely
+//         exitTimeoutRef.current = setTimeout(() => {
+//           setShowImage(false);
+//           setGeneratedImage(null);
+//           setImageAnimationState('hidden');
+//           setDemoImageStartTime(null);
+//         }, 2000);
+//       }, timeRemaining);
+
+//       return () => clearTimeout(timer);
+//     }
+//   }, [demoImageStartTime]);
+
+//   // Start heartbeat mechanism
+//   const startHeartbeat = useCallback(() => {
+//     if (heartbeatIntervalRef.current) {
+//       clearInterval(heartbeatIntervalRef.current);
+//     }
+
+//     heartbeatIntervalRef.current = setInterval(() => {
+//       if (!sendMessage({ type: 'ping' })) {
+//         console.log('Heartbeat failed, connection may be lost');
+//       }
+//     }, HEARTBEAT_INTERVAL);
+//   }, [sendMessage]);
+
+//   // Connect to WebSocket with reconnection logic
+//   const connectWebSocket = useCallback(() => {
+//     if (isUnmountedRef.current) return;
+
+//     // Don't attempt if we're already connected or connecting
+//     if (connectionState.isConnected || connectionState.isConnecting) return;
+
+//     setConnectionState(prev => ({
+//       ...prev,
+//       isConnecting: true,
+//       error: null
+//     }));
+
+//     try {
+//       cleanup(); // Clean up any existing connection
+
+//       console.log(`Connecting to Pico backend: ${WS_URL}`);
+//       ws.current = new WebSocket(WS_URL);
+
+//       ws.current.onopen = () => {
+//         if (isUnmountedRef.current) return;
+
+//         console.log('Connected to Pico backend');
+//         setConnectionState({
+//           isConnected: true,
+//           isConnecting: false,
+//           error: null,
+//           reconnectAttempts: 0
+//         });
+
+//         startHeartbeat();
+
+//         // Request initial greeting
+//         sendMessage({ action: 'request_greeting' });
+//       };
+
+//       ws.current.onmessage = (event) => {
+//         if (isUnmountedRef.current) return;
+
+//         try {
+//           const data = JSON.parse(event.data);
+//           console.log('Received from Pico:', data);
+
+//           if (data.type === 'greeting') {
+//             setPicoData(data);
+//             setFullText(data.text);
+//           } else if (data.type === 'pong') {
+//             // Heartbeat response received
+//             console.log('Heartbeat response received');
+//           } else if (data.type === 'error') {
+//             console.error('Server error:', data.error);
+//             setConnectionState(prev => ({
+//               ...prev,
+//               error: data.error || 'Unknown server error'
+//             }));
+//           } else if (data.event === 'state') {
+//             const v = data.value;
+//             if (v === 'listening') {
+//               setIsListening(true);
+//               setIsConversing(false);
+//               setIsTyping(false);
+//               setTitleHasBeenHidden(true);
+//             } else if (v === 'speaking') {
+//               setIsListening(false);
+//               setIsConversing(true);
+//               setIsTyping(true);
+//               setTypedText('');
+//               setTitleHasBeenHidden(true);
+//             }
+//             else if (v === "show_image" && data.url) {
+//               // Updated to match backend static URL
+//               setImageUrl(
+//                 `http://localhost:8000/${data.url.replace(/\\/g, "/")}`
+//               );
+//               setTimeout(() => setImageUrl(null), 10000);
+//             }
+//             else {
+//               // idle
+//               setIsListening(false);
+//               setIsConversing(false);
+//               setIsTyping(false);
+//             }
+//           }
+//         } catch (error) {
+//           console.error('Error parsing WebSocket message:', error);
+//         }
+//       };
+
+//       ws.current.onclose = (event) => {
+//         if (isUnmountedRef.current) return;
+
+//         console.log(`WebSocket connection closed. Code: ${event.code}, Reason: ${event.reason}`);
+
+//         setConnectionState(prev => ({
+//           ...prev,
+//           isConnected: false,
+//           isConnecting: false,
+//           error: event.code === 1000 ? null : `Connection closed (${event.code})`
+//         }));
+
+//         // Reset conversation states when connection is lost
+//         setIsListening(false);
+//         setIsConversing(false);
+//         setIsTyping(false);
+
+//         if (heartbeatIntervalRef.current) {
+//           clearInterval(heartbeatIntervalRef.current);
+//           heartbeatIntervalRef.current = null;
+//         }
+
+//         // Attempt reconnection if not intentionally closed
+//         if (event.code !== 1000 && connectionState.reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
+//           const delay = RECONNECT_INTERVALS[Math.min(connectionState.reconnectAttempts, RECONNECT_INTERVALS.length - 1)];
+
+//           setConnectionState(prev => ({
+//             ...prev,
+//             reconnectAttempts: prev.reconnectAttempts + 1
+//           }));
+
+//           console.log(`Reconnecting in ${delay}ms... (Attempt ${connectionState.reconnectAttempts + 1}/${MAX_RECONNECT_ATTEMPTS})`);
+
+//           reconnectTimeoutRef.current = setTimeout(() => {
+//             connectWebSocket();
+//           }, delay);
+//         }
+//       };
+
+//       ws.current.onerror = (error) => {
+//         if (isUnmountedRef.current) return;
+
+//         console.error('WebSocket error:', error);
+//         setConnectionState(prev => ({
+//           ...prev,
+//           isConnecting: false,
+//           error: 'Connection failed'
+//         }));
+
+//         // Reset conversation states on error
+//         setIsListening(false);
+//         setIsConversing(false);
+//         setIsTyping(false);
+//       };
+
+//     } catch (error) {
+//       console.error('Failed to create WebSocket connection:', error);
+//       setConnectionState(prev => ({
+//         ...prev,
+//         isConnecting: false,
+//         error: 'Failed to create connection'
+//       }));
+//     }
+//   }, [connectionState.isConnected, connectionState.isConnecting, connectionState.reconnectAttempts, cleanup, startHeartbeat, sendMessage]);
+
+//   // Request new greeting from backend
+//   const requestNewGreeting = useCallback(() => {
+//     sendMessage({ action: 'request_greeting' });
+//   }, [sendMessage]);
+
+//   // Initialize WebSocket connection
+//   useEffect(() => {
+//     isUnmountedRef.current = false;
+//     connectWebSocket();
+
+//     return () => {
+//       isUnmountedRef.current = true;
+//       cleanup();
+//     };
+//   }, []);
+
+//   // Auto-refresh greeting every 30 seconds
+//   useEffect(() => {
+//     if (!connectionState.isConnected || isConversing) return;
+
+//     const interval = setInterval(() => {
+//       requestNewGreeting();
+//     }, 30000);
+
+//     return () => clearInterval(interval);
+//   }, [connectionState.isConnected, isConversing, requestNewGreeting]);
+
+//   // Typing animation effect - only when connected
+//   useEffect(() => {
+//     if (connectionState.isConnected && isTyping && isConversing && fullText) {
+//       let currentIndex = 0;
+//       const typingInterval = setInterval(() => {
+//         if (currentIndex <= fullText.length) {
+//           setTypedText(fullText.slice(0, currentIndex));
+//           currentIndex++;
+//         } else {
+//           clearInterval(typingInterval);
+//           setIsTyping(false);
+//         }
+//       }, 50);
+
+//       return () => clearInterval(typingInterval);
+//     }
+//   }, [connectionState.isConnected, isTyping, isConversing, fullText]);
+
+//   // Audio level animation - only when connected
+//   useEffect(() => {
+//     let animationFrame: number;
+
+//     if (connectionState.isConnected && (isListening || isConversing)) {
+//       const animateAudio = () => {
+//         setAudioLevels(prev =>
+//           prev.map(() => Math.random() * 0.8 + 0.2)
+//         );
+//         animationFrame = requestAnimationFrame(animateAudio);
+//       };
+//       animateAudio();
+//     }
+
+//     return () => {
+//       if (animationFrame) {
+//         cancelAnimationFrame(animationFrame);
+//       }
+//     };
+//   }, [connectionState.isConnected, isListening, isConversing]);
+
+//   // Spline event handlers
+//   const onSplineLoad = () => {
+//     setSplineLoaded(true);
+//     setSplineError(false);
+//   };
+
+//   const onSplineError = () => {
+//     setSplineError(true);
+//   };
+
+//   return (
+//     <>
+//       {/* Enhanced CSS with connection indicators */}
+//       <style>{`
+//         .speech-bubble::after {
+//           content: '';
+//           position: absolute;
+//           bottom: -12px;
+//           left: 50%;
+//           transform: translateX(-50%);
+//           width: 0;
+//           height: 0;
+//           border-left: 15px solid transparent;
+//           border-right: 15px solid transparent;
+//           border-top: 12px solid rgba(128, 0, 255, 0.3);
+//           filter: drop-shadow(0 2px 4px rgba(128, 0, 255, 0.2));
+//         }
+
+//         .speech-bubble-cyan::after {
+//           border-top-color: rgba(0, 255, 255, 0.25);
+//           filter: drop-shadow(0 2px 4px rgba(0, 255, 255, 0.2));
+//         }
+
+//         .speech-bubble {
+//           position: relative;
+//           animation: speechBubbleFloat 3s ease-in-out infinite;
+//         }
+
+//         @keyframes speechBubbleFloat {
+//           0%, 100% { transform: translateY(0px) scale(1); }
+//           50% { transform: translateY(-3px) scale(1.02); }
+//         }
+
+//         .cyber-font {
+//           font-family: 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+//           font-weight: 900;
+//           letter-spacing: 0.2em;
+//           text-transform: uppercase;
+//           font-style: normal;
+//         }
+
+//         /* Connection status indicators */
+//         .connection-status {
+//           position: fixed;
+//           top: 20px;
+//           right: 20px;
+//           z-index: 1000;
+//           padding: 8px 16px;
+//           border-radius: 25px;
+//           font-size: 11px;
+//           font-family: 'Courier New', monospace;
+//           font-weight: bold;
+//           backdrop-filter: blur(10px);
+//           transition: all 0.3s ease;
+//           border: 1px solid;
+//           text-transform: uppercase;
+//           letter-spacing: 0.5px;
+//         }
+
+//         .status-connected {
+//           background: rgba(0, 255, 0, 0.15);
+//           border-color: rgba(0, 255, 0, 0.4);
+//           color: rgba(0, 255, 0, 0.9);
+//           text-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+//         }
+
+//         .status-connecting {
+//           background: rgba(255, 255, 0, 0.15);
+//           border-color: rgba(255, 255, 0, 0.4);
+//           color: rgba(255, 255, 0, 0.9);
+//           text-shadow: 0 0 8px rgba(255, 255, 0, 0.3);
+//           animation: pulse 2s ease-in-out infinite;
+//         }
+
+//         .status-error {
+//           background: rgba(255, 100, 100, 0.15);
+//           border-color: rgba(255, 100, 100, 0.4);
+//           color: rgba(255, 100, 100, 0.9);
+//           text-shadow: 0 0 8px rgba(255, 100, 100, 0.3);
+//         }
+
+//         @keyframes pulse {
+//           0%, 100% { opacity: 1; }
+//           50% { opacity: 0.6; }
+//         }
+
+//         /* Animated Image Container */
+//         .animated-image-container {
+//           position: fixed;
+//           top: 85px; /* CHANGED: Moved to top right (from bottom: 40px) */
+//           right: 20px;
+//           width: 320px;
+//           height: auto;
+//           perspective: 1000px;
+//           z-index: 9999;
+//           pointer-events: auto;
+//         }
+
+//         .animated-image-container.entering {
+//           animation: imageEntry 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+//         }
+
+//         .animated-image-container.visible {
+//           opacity: 1;
+//           transform: translateZ(0) scale(1) rotateY(0deg) rotateX(0deg);
+//           filter: blur(0px) brightness(1);
+//           animation: floatUpDown 3s ease-in-out infinite;
+//         }
+
+//         .animated-image-container.exiting {
+//           animation: imageExit 2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+//         }
+
+//         @keyframes imageEntry {
+//           0% {
+//             opacity: 0;
+//             transform: translateZ(-800px) rotateY(45deg) rotateX(25deg) scale(0.3);
+//             filter: blur(15px) brightness(0.3);
+//           }
+//           50% {
+//             opacity: 0.7;
+//             transform: translateZ(-200px) rotateY(15deg) rotateX(8deg) scale(0.7);
+//             filter: blur(5px) brightness(0.7);
+//           }
+//           100% {
+//             opacity: 1;
+//             transform: translateZ(0) rotateY(0deg) rotateX(0deg) scale(1);
+//             filter: blur(0px) brightness(1);
+//           }
+//         }
+
+//         @keyframes imageExit {
+//           0% {
+//             opacity: 1;
+//             transform: translateZ(0) rotateY(0deg) rotateX(0deg) scale(1);
+//             filter: blur(0px) brightness(1);
+//           }
+//           50% {
+//             opacity: 0.7;
+//             transform: translateZ(-200px) rotateY(-15deg) rotateX(-8deg) scale(0.7);
+//             filter: blur(5px) brightness(0.7);
+//           }
+//           100% {
+//             opacity: 0;
+//             transform: translateZ(-800px) rotateY(-45deg) rotateX(-25deg) scale(0.3);
+//             filter: blur(15px) brightness(0.3);
+//           }
+//         }
+
+//         @keyframes floatUpDown {
+//           0%, 100% { transform: translateY(0px); }
+//           50% { transform: translateY(-5px); }
+//         }
+
+//         .animated-image {
+//           width: 100%;
+//           height: auto;
+//           border-radius: 12px;
+//           box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+//           position: relative;
+//         }
+
+//         .download-icon {
+//           position: absolute;
+//           top: 8px;
+//           right: 8px;
+//           width: 32px;
+//           height: 32px;
+//           cursor: pointer;
+//           background: rgba(0, 0, 0, 0.5);
+//           border-radius: 50%;
+//           display: flex;
+//           justify-content: center;
+//           align-items: center;
+//           transition: all 0.3s ease;
+//           backdrop-filter: blur(8px);
+//         }
+
+//         .download-icon:hover {
+//           background: rgba(0, 0, 0, 0.7);
+//           transform: scale(1.1);
+//         }
+
+//         .download-icon:active {
+//           transform: scale(0.95);
+//         }
+
+//         .download-icon svg {
+//           width: 18px;
+//           height: 18px;
+//           fill: white;
+//         }
+
+//         .refresh-button {
+//           position: fixed;
+//           bottom: 30px;
+//           right: 30px;
+//           z-index: 1000;
+//           padding: 12px 16px;
+//           border-radius: 50px;
+//           background: rgba(0, 255, 255, 0.1);
+//           border: 1px solid rgba(0, 255, 255, 0.3);
+//           color: rgba(0, 255, 255, 0.9);
+//           font-size: 10px;
+//           font-family: 'Courier New', monospace;
+//           font-weight: bold;
+//           text-transform: uppercase;
+//           letter-spacing: 0.5px;
+//           cursor: pointer;
+//           transition: all 0.3s ease;
+//           backdrop-filter: blur(10px);
+//         }
+
+//         .refresh-button:hover {
+//           background: rgba(0, 255, 255, 0.2);
+//           border-color: rgba(0, 255, 255, 0.5);
+//           transform: scale(1.05);
+//           box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+//         }
+//       `}</style>
+
+//       {/* Connection Status Indicator */}
+//       <div className={`connection-status ${
+//         connectionState.error ? 'status-error' :
+//         connectionState.isConnecting ? 'status-connecting' :
+//         connectionState.isConnected ? 'status-connected' : 'status-error'
+//       }`}>
+//         {connectionState.error ? '● ERROR' :
+//          connectionState.isConnecting ? '◐ CONNECTING...' :
+//          connectionState.isConnected ? '● PICO ONLINE' : '◌ OFFLINE'}
+//       </div>
+
+//       {/* Animated Image Container */}
+//       {imageUrl && (
+//         <div className={`animated-image-container ${imageAnimationState}`}>
+//           <img
+//             src={imageUrl}
+//             alt="Generated Image"
+//             className="animated-image"
+//           />
+//           <div
+//             className="download-icon"
+//             onClick={() => downloadImage(generatedImage, `generated-image-${Date.now()}.png`)}
+//             title="Download Image"
+//           >
+//             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+//               <path d="M20 15v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"
+//                     stroke="currentColor"
+//                     strokeWidth="2"
+//                     strokeLinecap="round"
+//                     strokeLinejoin="round"
+//                     fill="none"/>
+//             </svg>
+//           </div>
+//         </div>
+//       )}
+
+//       <section
+//         className={`fixed inset-0 w-screen h-screen flex items-center justify-center overflow-hidden animated-bg transition-all duration-1000 select-none cursor-none ${
+//           connectionState.isConnected && (isListening || isConversing)
+//             ? 'brightness-110 contrast-110'
+//             : 'brightness-100'
+//         }`}
+//         style={{
+//           transformOrigin: 'center center',
+//           maxWidth: '100vw',
+//           maxHeight: '100vh',
+//           userSelect: 'none',
+//           WebkitUserSelect: 'none',
+//           MozUserSelect: 'none',
+//           msUserSelect: 'none',
+//           WebkitTouchCallout: 'none',
+//           cursor: 'none'
+//         }}
+//       >
+//         {/* Enhanced Ambient Background Elements - ANIMATED */}
+//         <div className={`absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none transition-opacity duration-1000 ${
+//           connectionState.isConnected && (isListening || isConversing) ? 'opacity-30 sm:opacity-40' : 'opacity-15 sm:opacity-20'
+//         }`}
+//         style={{
+//           userSelect: 'none',
+//           WebkitUserSelect: 'none',
+//           MozUserSelect: 'none',
+//           msUserSelect: 'none',
+//           cursor: 'none'
+//         }}>
+//           {/* Background grid */}
+//           <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none"
+//                style={{
+//                  backgroundImage: `
+//                    linear-gradient(90deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%),
+//                    linear-gradient(0deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%)
+//                  `,
+//                  backgroundSize: typeof window !== 'undefined' && window.innerWidth < 640 ? '50px 50px' : typeof window !== 'undefined' && window.innerWidth < 1024 ? '60px 60px' : '70px 70px',
+//                  animation: `gridMove ${connectionState.isConnected && (isListening || isConversing) ? '8s' : '15s'} linear infinite`,
+//                  userSelect: 'none',
+//                  cursor: 'none'
+//                }}>
+//           </div>
+
+//           {/* Data streams */}
+//           <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none">
+//             {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 6 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 8 : 10)].map((_, i) => (
+//               <div
+//                 key={`stream-${i}`}
+//                 className={`absolute w-px overflow-hidden select-none pointer-events-none bg-gradient-to-b from-transparent via-neon-cyan/40 to-transparent transition-all duration-500 ${
+//                   connectionState.isConnected && (isListening || isConversing) ? 'via-neon-cyan/70 sm:via-neon-cyan/80' : 'via-neon-cyan/30 sm:via-neon-cyan/40'
+//                 }`}
+//                 style={{
+//                   left: `${i * (100 / (typeof window !== 'undefined' && window.innerWidth < 640 ? 6 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 8 : 10))}%`,
+//                   height: '100vh',
+//                   maxHeight: '100vh',
+//                   animation: `dataStream ${connectionState.isConnected && (isListening || isConversing) ? (2 + i * 0.2) : (3 + i * 0.4)}s linear infinite`,
+//                   animationDelay: `${i * 0.3}s`,
+//                   userSelect: 'none',
+//                   cursor: 'none'
+//                 }}
+//               />
+//             ))}
+//           </div>
+
+//           {/* Geometric shapes */}
+//           <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none">
+//             {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 3 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 4 : 6)].map((_, i) => (
+//               <div
+//                 key={`geo-${i}`}
+//                 className={`absolute border overflow-hidden select-none pointer-events-none transition-all duration-700 ${
+//                   connectionState.isConnected && (isListening || isConversing)
+//                     ? 'border-neon-purple/40 animate-pulse'
+//                     : 'border-neon-purple/20'
+//                 }`}
+//                 style={{
+//                   left: `${15 + (i * 12)}%`,
+//                   top: `${15 + (i % 3) * 20}%`,
+//                   width: `${15 + (i % 3) * 8}px`,
+//                   height: `${15 + (i % 3) * 8}px`,
+//                   maxWidth: '35px',
+//                   maxHeight: '35px',
+//                   animationDelay: `${i * 0.4}s`,
+//                   animationDuration: `${5 + (i % 3) * 2}s`,
+//                   transform: `rotate(${i * 25}deg)`,
+//                   animation: `geometricFloat ${connectionState.isConnected && (isListening || isConversing) ? (5 + i) : (7 + i)}s ease-in-out infinite`,
+//                   userSelect: 'none',
+//                   cursor: 'none'
+//                 }}
+//               />
+//             ))}
+//           </div>
+//         </div>
+
+//         <div className={`w-full h-full max-w-full max-h-full px-3 sm:px-4 md:px-6 lg:px-8 text-center relative z-10 transition-all duration-1000 flex flex-col justify-center items-center overflow-hidden`}
+//              style={{
+//                transformOrigin: 'center center'
+//              }}>
+
+//           {/* Title - Only show when not connected or before first conversation */}
+//           {!connectionState.isConnected || !titleHasBeenHidden ? (
+//             <div className={`animate-fade-in-up transition-all duration-1000 mb-1 sm:mb-2 md:mb-3 overflow-hidden select-none ${
+//               connectionState.isConnected && isListening ? 'text-glow-enhanced' : ''
+//             } ${connectionState.isConnected && isConversing ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}
+//                  style={{
+//                    userSelect: 'none',
+//                    WebkitUserSelect: 'none',
+//                    cursor: 'default'
+//                  }}>
+//               <h1 className={`cyber-font text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-all duration-700 overflow-hidden select-none ${
+//                 connectionState.isConnected && isListening
+//                   ? 'text-glow-enhanced'
+//                   : 'text-glow'
+//               }`} style={{
+//                 transformOrigin: 'center center',
+//                 userSelect: 'none',
+//                 WebkitUserSelect: 'none',
+//                 cursor: 'default'
+//               }}>
+//                 HI I AM PICO
+//               </h1>
+//             </div>
+//           ) : null}
+
+//           {/* Speech Bubble Conversation Area - Only show when connected */}
+//           {connectionState.isConnected && titleHasBeenHidden && (
+//             <div className={`animate-fade-in-up transition-all duration-1000 mb-4 sm:mb-5 md:mb-6 overflow-visible ${
+//               isConversing ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-0'
+//             }`}>
+//               <div className={`speech-bubble ${!isConversing ? 'speech-bubble-cyan' : ''} bg-gradient-to-r backdrop-blur-sm rounded-2xl p-4 sm:p-5 md:p-6 border max-w-lg mx-auto transition-all duration-700 overflow-hidden ${
+//                 isConversing
+//                   ? 'from-neon-purple/20 to-neon-blue/20 border-neon-purple/40 shadow-lg'
+//                   : 'from-neon-cyan/15 to-neon-blue/15 border-neon-cyan/35 shadow-md'
+//               }`}
+//               style={{
+//                 cursor: 'default',
+//                 boxShadow: isConversing
+//                   ? '0 8px 32px rgba(128, 0, 255, 0.3), 0 0 20px rgba(128, 0, 255, 0.2)'
+//                   : '0 8px 32px rgba(0, 255, 255, 0.25), 0 0 20px rgba(0, 255, 255, 0.15)'
+//               }}>
+//                 {isConversing ? (
+//                   <div className="select-none">
+//                     {/* TYPING ANIMATION TEXT FROM BACKEND */}
+//                     <p className="text-sm sm:text-base font-orbitron text-neon-purple/95 leading-relaxed overflow-hidden select-text font-medium"
+//                        style={{
+//                          cursor: 'text',
+//                          userSelect: 'text',
+//                          WebkitUserSelect: 'text',
+//                          MozUserSelect: 'text',
+//                          textShadow: '0 0 10px rgba(128, 0, 255, 0.3)'
+//                        }}>
+//                       "{typedText}
+//                       {isTyping && (
+//                         <span className="animate-pulse text-neon-purple ml-1">|</span>
+//                       )}"
+//                     </p>
+
+//                     {/* Show backend metadata */}
+//                     {picoData && (picoData.mood || picoData.user_count) && (
+//                       <div className="mt-2 text-xs text-neon-purple/60 font-mono">
+//                         {picoData.mood && `Mood: ${picoData.mood}`}
+//                         {picoData.mood && picoData.user_count && ' • '}
+//                         {picoData.user_count && `Users: ${picoData.user_count}`}
+//                       </div>
+//                     )}
+//                   </div>
+//                 ) : (
+//                   <div className="select-none">
+//                     {/* READY MESSAGE WITH DYNAMIC GREETING */}
+//                     <p className="text-sm sm:text-base font-orbitron text-neon-cyan/95 leading-relaxed overflow-hidden select-text font-medium"
+//                        style={{
+//                          cursor: 'text',
+//                          userSelect: 'text',
+//                          WebkitUserSelect: 'text',
+//                          MozUserSelect: 'text',
+//                          textShadow: '0 0 10px rgba(0, 255, 255, 0.3)'
+//                        }}>
+//                       {picoData?.time_greeting
+//                         ? `${picoData.time_greeting} Ready for your next question...`
+//                         : '"Ready for your next question..."'
+//                       }
+//                     </p>
+//                   </div>
+//                 )}
+//               </div>
+//             </div>
+//           )}
+
+//           {/* Robot Avatar Container - BIGGER SIZE */}
+//           <div className={`relative mb-1 sm:mb-2 md:mb-3 overflow-visible select-none ${
+//             connectionState.isConnected && isConversing ? 'scale-105' : connectionState.isConnected && titleHasBeenHidden ? 'scale-102' : 'scale-100'
+//           }`} style={{
+//             width: '850px',
+//             height: '800px',
+//             maxWidth: '95vw',
+//             maxHeight: '70vh',
+//             transform: 'translateY(20px)',
+//             transformOrigin: 'center center',
+//             transition: 'transform 0.3s ease'
+//           }}>
+
+//             {/* Animated Background Layer Behind Spline Scene */}
+//             {connectionState.isConnected && (isListening || isConversing) && (
+//               <div
+//                 className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+//                 style={{
+//                   background: `radial-gradient(circle at center, rgba(${isConversing ? '128, 0, 255' : '0, 255, 255'}, 0.15), transparent 70%)`,
+//                   animation: 'floating 4s ease-in-out infinite',
+//                   borderRadius: '50%',
+//                   transform: 'scale(1.2)',
+//                   filter: `blur(20px)`
+//                 }}
+//               />
+//             )}
+
+//             {/* Data Stream Effects */}
+//             {connectionState.isConnected && (isListening || isConversing) && (
+//               <div className="absolute inset-0 z-1 pointer-events-none overflow-hidden select-none">
+//                 {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 6 : 8)].map((_, i) => (
+//                   <div
+//                     key={`stream-${i}`}
+//                     className={`absolute text-xs sm:text-sm font-mono animate-float overflow-hidden select-none pointer-events-none ${
+//                       isConversing ? 'text-neon-purple/70' : 'text-neon-blue/60 sm:text-neon-blue/70'
+//                     }`}
+//                     style={{
+//                       left: `${10 + (i * 8)}%`,
+//                       top: `${10 + (i % 4) * 20}%`,
+//                       animationDelay: `${i * 0.25}s`,
+//                       animationDuration: `${2.5 + (i % 3) * 0.5}s`,
+//                       textShadow: '0 0 8px currentColor',
+//                       userSelect: 'none',
+//                       cursor: 'none'
+//                     }}
+//                   >
+//                     {isConversing
+//                       ? ['TALK', 'CHAT', 'CONV', 'RESP', 'WORD', 'SPEAK'][i] || 'AI'
+//                       : ""
+//                     }
+//                   </div>
+//                 ))}
+//               </div>
+//             )}
+
+//             {/* Spline 3D Robot Scene with iframe - BIGGER */}
+//             <div className="relative z-10 w-full h-full">
+//               {!splineError ? (
+//                 <>
+//                   <iframe
+//                     src="https://my.spline.design/genkubgreetingrobot-PWk9MxwXWbi6djM02Z2cOte5/"
+//                     width="100%"
+//                     height="100%"
+//                     frameBorder="0"
+//                     style={{
+//                       border: 'none',
+//                       backgroundColor: 'transparent',
+//                       borderRadius: '100%',
+//                       overflow: 'hidden'
+//                     }}
+//                     title="Pico 3D Robot"
+//                     onLoad={onSplineLoad}
+//                     onError={onSplineError}
+//                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//                   />
+
+//                   {/* Loading indicator */}
+//                   {!splineLoaded && (
+//                     <div className="absolute inset-0 flex items-center justify-center bg-transparent">
+//                       <div className="text-neon-cyan font-orbitron text-sm animate-pulse">
+//                         Loading Pico...
+//                       </div>
+//                     </div>
+//                   )}
+//                 </>
+//               ) : (
+//                 /* Fallback when Spline fails to load - BIGGER */
+//                 <div className="absolute inset-0 flex items-center justify-center">
+//                   <div className="w-96 h-96 rounded-full bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 border-2 border-neon-cyan/30 flex items-center justify-center backdrop-blur-sm">
+//                     <span className="text-neon-cyan font-orbitron text-4xl font-bold animate-pulse">PICO</span>
+//                   </div>
+//                 </div>
+//               )}
+//             </div>
+
+//             {/* Audio Wave Visualization */}
+//             {connectionState.isConnected && (isListening || isConversing) && (
+//               <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2 overflow-hidden select-none pointer-events-none z-20"
+//                    style={{
+//                      perspective: '200px',
+//                      maxWidth: '200px'
+//                    }}>
+//                 <div className="flex items-end justify-center space-x-1 sm:space-x-2 overflow-hidden select-none">
+//                   {audioLevels.slice(0, 7).map((level, index) => (
+//                     <div
+//                       key={index}
+//                       className={`rounded-full transition-all duration-100 overflow-hidden select-none pointer-events-none ${
+//                         isConversing
+//                           ? 'bg-gradient-to-t from-neon-purple via-neon-blue to-neon-cyan'
+//                           : 'bg-gradient-to-t from-neon-cyan via-neon-blue to-neon-purple'
+//                       }`}
+//                       style={{
+//                         width: '3px',
+//                         height: `${level * 30 + 10}px`,
+//                         maxHeight: '45px',
+//                         boxShadow: `0 0 10px hsl(var(${isConversing ? '--neon-purple' : '--neon-cyan'})/0.8)`,
+//                         userSelect: 'none',
+//                         cursor: 'none'
+//                       }}
+//                     />
+//                   ))}
+//                 </div>
+//               </div>
+//             )}
+//           </div>
+
+//           {/* Status Indicator - Enhanced with Connection Info */}
+//           <div className={`flex items-center justify-center space-x-2 animate-fade-in-up transition-all duration-500 overflow-hidden select-none ${
+//             connectionState.isConnected && (isListening || isConversing) ? 'scale-102 sm:scale-105' : 'scale-100'
+//           }`} style={{
+//             animationDelay: '0.9s',
+//             cursor: 'default',
+//             transform: 'translateY(20px)',
+//             marginTop: '10px'
+//           }}>
+//             <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-500 overflow-hidden select-none ${
+//               connectionState.isConnected && isConversing ? 'bg-neon-purple pulse-glow-enhanced' :
+//               connectionState.isConnected && isListening ? 'bg-neon-cyan pulse-glow-enhanced' :
+//               connectionState.isConnected ? 'bg-neon-cyan pulse-glow' :
+//               connectionState.isConnecting ? 'bg-yellow-400 pulse-glow' : 'bg-red-400 pulse-glow'
+//             }`}></div>
+//             <span className={`text-xs sm:text-sm font-orbitron transition-all duration-500 overflow-hidden select-none ${
+//               connectionState.isConnected && isConversing ? 'text-neon-purple font-bold' :
+//               connectionState.isConnected && isListening ? 'text-neon-cyan font-bold' :
+//               connectionState.isConnected ? 'text-neon-cyan' :
+//               connectionState.isConnecting ? 'text-yellow-400' : 'text-red-400'
+//             }`}
+//             style={{ cursor: 'default' }}>
+//               {connectionState.isConnected && isConversing ? 'Pico Speaking...' :
+//                connectionState.isConnected && isListening ? 'Pico Listening...' :
+//                connectionState.isConnected ? 'Pico System Online' :
+//                connectionState.isConnecting ? 'Connecting to Pico...' :
+//                connectionState.error ? `Connection Error: ${connectionState.error}` : 'Pico Offline'}
+//             </span>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Manual Refresh Button (only show when connected) */}
+//       {connectionState.isConnected && (
+//         <button
+//           onClick={requestNewGreeting}
+//           className="refresh-button"
+//           title="Request new greeting from Pico"
+//         >
+//           ⟲ Refresh Greeting
+//         </button>
+//       )}
+//     </>
+//   );
+// };
+
+// import { useState, useEffect, useRef, useCallback } from "react";
+// import { Button } from "@/components/ui/button";
+
+// interface PicoMessage {
+//   type: string;
+//   text: string;
+//   time_greeting?: string;
+//   timestamp?: string;
+//   mood?: string;
+//   user_count?: number;
+//   error?: string;
+// }
+
+// interface ConnectionState {
+//   isConnected: boolean;
+//   isConnecting: boolean;
+//   error: string | null;
+//   reconnectAttempts: number;
+// }
+
+// export const HeroSection = () => {
+//   const [isListening, setIsListening] = useState(false);
+//   const [isConversing, setIsConversing] = useState(false);
+//   const [titleHasBeenHidden, setTitleHasBeenHidden] = useState(false);
+//   const [audioLevels, setAudioLevels] = useState([
+//     0.3, 0.7, 0.5, 0.9, 0.4, 0.8, 0.2,
+//   ]);
+//   const [typedText, setTypedText] = useState("");
+//   const [isTyping, setIsTyping] = useState(false);
+//   const [fullText, setFullText] = useState(
+//     "Hello! I'm Pico. How can I assist you today?"
+//   );
+//   const [picoData, setPicoData] = useState<PicoMessage | null>(null);
+//   const [connectionState, setConnectionState] = useState<ConnectionState>({
+//     isConnected: false,
+//     isConnecting: false,
+//     error: null,
+//     reconnectAttempts: 0,
+//   });
+//   const [splineLoaded, setSplineLoaded] = useState(false);
+//   const [splineError, setSplineError] = useState(false);
+//   const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+//   const ws = useRef<WebSocket | null>(null);
+//   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+//   const heartbeatIntervalRef = useRef<NodeJS.Timeout | null>(null);
+//   const isUnmountedRef = useRef(false);
+
+//   const WS_URL = "ws://localhost:8000/ws"; // update to match your backend port
+//   const MAX_RECONNECT_ATTEMPTS = 5;
+//   const HEARTBEAT_INTERVAL = 30000; // 30s
+//   const RECONNECT_INTERVALS = [1000, 2000, 4000, 8000, 16000];
+
+//   const cleanup = useCallback(() => {
+//     if (reconnectTimeoutRef.current) clearTimeout(reconnectTimeoutRef.current);
+//     if (heartbeatIntervalRef.current)
+//       clearInterval(heartbeatIntervalRef.current);
+//     if (ws.current) {
+//       ws.current.onopen = null;
+//       ws.current.onmessage = null;
+//       ws.current.onclose = null;
+//       ws.current.onerror = null;
+//       if (ws.current.readyState === WebSocket.OPEN) ws.current.close();
+//       ws.current = null;
+//     }
+//   }, []);
+
+//   const sendMessage = useCallback((message: object) => {
+//     if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+//       try {
+//         ws.current.send(JSON.stringify(message));
+//         return true;
+//       } catch (error) {
+//         console.error("Failed to send WebSocket message:", error);
+//         return false;
+//       }
+//     }
+//     return false;
+//   }, []);
+
+//   const startHeartbeat = useCallback(() => {
+//     if (heartbeatIntervalRef.current)
+//       clearInterval(heartbeatIntervalRef.current);
+//     heartbeatIntervalRef.current = setInterval(() => {
+//       if (!sendMessage({ type: "ping" }))
+//         console.log("Heartbeat failed, connection may be lost");
+//     }, HEARTBEAT_INTERVAL);
+//   }, [sendMessage]);
+
+//   const connectWebSocket = useCallback(() => {
+//     if (isUnmountedRef.current) return;
+//     if (connectionState.isConnected || connectionState.isConnecting) return;
+
+//     setConnectionState((prev) => ({
+//       ...prev,
+//       isConnecting: true,
+//       error: null,
+//     }));
+//     cleanup();
+
+//     try {
+//       ws.current = new WebSocket(WS_URL);
+
+//       ws.current.onopen = () => {
+//         if (isUnmountedRef.current) return;
+//         setConnectionState({
+//           isConnected: true,
+//           isConnecting: false,
+//           error: null,
+//           reconnectAttempts: 0,
+//         });
+//         startHeartbeat();
+//         sendMessage({ action: "request_greeting" });
+//       };
+
+//       ws.current.onmessage = (event) => {
+//         if (isUnmountedRef.current) return;
+
+//         try {
+//           const data = JSON.parse(event.data);
+
+//           if (data.type === "greeting") {
+//             setPicoData(data);
+//             setFullText(data.text);
+//           } else if (data.type === "pong") {
+//             // Heartbeat response
+//           } else if (data.type === "error") {
+//             setConnectionState((prev) => ({
+//               ...prev,
+//               error: data.error || "Unknown server error",
+//             }));
+//           } else if (data.event === "state") {
+//             const v = data.value;
+//             if (v === "listening") {
+//               setIsListening(true);
+//               setIsConversing(false);
+//               setIsTyping(false);
+//               setTitleHasBeenHidden(true);
+//             } else if (v === "speaking") {
+//               setIsListening(false);
+//               setIsConversing(true);
+//               setIsTyping(true);
+//               setTypedText("");
+//               setTitleHasBeenHidden(true);
+//             } else if (v === "show_image" && data.url) {
+//               // Updated to match backend static URL
+//               setImageUrl(
+//                 `http://localhost:8000/${data.url.replace(/\\/g, "/")}`
+//               );
+//               setTimeout(() => setImageUrl(null), 10000);
+//             } else {
+//               setIsListening(false);
+//               setIsConversing(false);
+//               setIsTyping(false);
+//             }
+//           }
+//         } catch (error) {
+//           console.error("Error parsing WebSocket message:", error);
+//         }
+//       };
+
+//       ws.current.onclose = (event) => {
+//         if (isUnmountedRef.current) return;
+
+//         setConnectionState((prev) => ({
+//           ...prev,
+//           isConnected: false,
+//           isConnecting: false,
+//           error:
+//             event.code === 1000 ? null : `Connection closed (${event.code})`,
+//         }));
+
+//         setIsListening(false);
+//         setIsConversing(false);
+//         setIsTyping(false);
+
+//         if (heartbeatIntervalRef.current)
+//           clearInterval(heartbeatIntervalRef.current);
+
+//         if (
+//           event.code !== 1000 &&
+//           connectionState.reconnectAttempts < MAX_RECONNECT_ATTEMPTS
+//         ) {
+//           const delay =
+//             RECONNECT_INTERVALS[
+//               Math.min(
+//                 connectionState.reconnectAttempts,
+//                 RECONNECT_INTERVALS.length - 1
+//               )
+//             ];
+//           setConnectionState((prev) => ({
+//             ...prev,
+//             reconnectAttempts: prev.reconnectAttempts + 1,
+//           }));
+//           reconnectTimeoutRef.current = setTimeout(
+//             () => connectWebSocket(),
+//             delay
+//           );
+//         }
+//       };
+
+//       ws.current.onerror = (error) => {
+//         if (isUnmountedRef.current) return;
+//         setConnectionState((prev) => ({
+//           ...prev,
+//           isConnecting: false,
+//           error: "Connection failed",
+//         }));
+//         setIsListening(false);
+//         setIsConversing(false);
+//         setIsTyping(false);
+//       };
+//     } catch (error) {
+//       setConnectionState((prev) => ({
+//         ...prev,
+//         isConnecting: false,
+//         error: "Failed to create connection",
+//       }));
+//     }
+//   }, [
+//     connectionState.isConnected,
+//     connectionState.isConnecting,
+//     connectionState.reconnectAttempts,
+//     cleanup,
+//     startHeartbeat,
+//     sendMessage,
+//   ]);
+
+//   const requestNewGreeting = useCallback(
+//     () => sendMessage({ action: "request_greeting" }),
+//     [sendMessage]
+//   );
+
+//   useEffect(() => {
+//     isUnmountedRef.current = false;
+//     connectWebSocket();
+//     return () => {
+//       isUnmountedRef.current = true;
+//       cleanup();
+//     };
+//   }, []);
+
+//   useEffect(() => {
+//     if (!connectionState.isConnected || isConversing) return;
+//     const interval = setInterval(() => requestNewGreeting(), 30000);
+//     return () => clearInterval(interval);
+//   }, [connectionState.isConnected, isConversing, requestNewGreeting]);
+
+//   useEffect(() => {
+//     if (connectionState.isConnected && isTyping && isConversing && fullText) {
+//       let currentIndex = 0;
+//       const typingInterval = setInterval(() => {
+//         if (currentIndex <= fullText.length) {
+//           setTypedText(fullText.slice(0, currentIndex));
+//           currentIndex++;
+//         } else clearInterval(typingInterval);
+//       }, 50);
+//       return () => clearInterval(typingInterval);
+//     }
+//   }, [connectionState.isConnected, isTyping, isConversing, fullText]);
+
+//   useEffect(() => {
+//     let animationFrame: number;
+//     if (connectionState.isConnected && (isListening || isConversing)) {
+//       const animateAudio = () => {
+//         setAudioLevels((prev) => prev.map(() => Math.random()));
+//         animationFrame = requestAnimationFrame(animateAudio);
+//       };
+//       animationFrame = requestAnimationFrame(animateAudio);
+//     }
+//     return () => cancelAnimationFrame(animationFrame);
+//   }, [connectionState.isConnected, isListening, isConversing]);
+
+//   return (
+//     <div className="relative flex flex-col items-center justify-center h-screen w-full bg-gray-900 text-white">
+//       {/* 🔥 Image popup */}
+//       {imageUrl && (
+//         <div className="fixed top-4 right-4 bg-white shadow-lg p-3 rounded-xl z-[9999]">
+//           <img
+//             src={imageUrl}
+//             alt="Generated by Pico"
+//             className="max-w-[200px] rounded-lg"
+//           />
+//           <a
+//             href={imageUrl}
+//             download
+//             className="block text-center mt-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+//           >
+//             ⬇ Download
+//           </a>
+//         </div>
+//       )}
+
+//       {/* 3D Spline */}
+//       <div className="w-full h-96 mb-4">
+//         {!splineError ? (
+//           <iframe
+//             src="/SplineScene"
+//             className="w-full h-full"
+//             onLoad={() => setSplineLoaded(true)}
+//             onError={() => setSplineError(true)}
+//           />
+//         ) : (
+//           <p className="text-red-500">Failed to load 3D scene.</p>
+//         )}
+//       </div>
+
+//       {/* Title */}
+//       {!titleHasBeenHidden && (
+//         <h1 className="text-4xl font-bold mb-4">{typedText || fullText}</h1>
+//       )}
+
+//       {/* Typing text */}
+//       {isTyping && <p className="text-lg">{typedText}</p>}
+
+//       {/* Audio bars */}
+//       {(isListening || isConversing) && (
+//         <div className="flex space-x-1 mt-4">
+//           {audioLevels.map((level, idx) => (
+//             <div
+//               key={idx}
+//               className="bg-green-400"
+//               style={{ width: "5px", height: `${Math.max(level * 50, 5)}px` }}
+//             />
+//           ))}
+//         </div>
+//       )}
+
+//       {/* Connection status */}
+//       <div className="absolute bottom-4 left-4">
+//         <p
+//           className={`text-sm ${
+//             connectionState.isConnected ? "text-green-400" : "text-red-400"
+//           }`}
+//         >
+//           {connectionState.isConnected
+//             ? "Connected to Pico"
+//             : connectionState.isConnecting
+//             ? "Connecting..."
+//             : connectionState.error || "Disconnected"}
+//         </p>
+//       </div>
+
+//       {/* Refresh greeting button */}
+//       <div className="absolute bottom-4 right-4">
+//         <Button onClick={requestNewGreeting}>Refresh Greeting</Button>
+//       </div>
+//     </div>
+//   );
+// };
+
+import { useState, useEffect, useRef, useCallback } from "react";
+import { Button } from "@/components/ui/button";
 
 interface PicoMessage {
   type: string;
@@ -1429,33 +2818,49 @@ export const HeroSection = () => {
   const [isListening, setIsListening] = useState(false);
   const [isConversing, setIsConversing] = useState(false);
   const [titleHasBeenHidden, setTitleHasBeenHidden] = useState(false);
-  const [audioLevels, setAudioLevels] = useState([0.3, 0.7, 0.5, 0.9, 0.4, 0.8, 0.2]);
-  
+  const [audioLevels, setAudioLevels] = useState([
+    0.3, 0.7, 0.5, 0.9, 0.4, 0.8, 0.2,
+  ]);
+
   // WebSocket and dynamic text states
-  const [typedText, setTypedText] = useState('');
+  const [typedText, setTypedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [fullText, setFullText] = useState("Hello! I'm Pico. How can I assist you today?");
+  const [fullText, setFullText] = useState(
+    "Hello! I'm Pico. How can I assist you today?"
+  );
   const [picoData, setPicoData] = useState<PicoMessage | null>(null);
-  
+
+  // Image animation states
+  const [generatedImage, setGeneratedImage] = useState<string | null>(null);
+  const [showImage, setShowImage] = useState(false);
+  const [imageAnimationState, setImageAnimationState] = useState<
+    "entering" | "visible" | "exiting" | "hidden"
+  >("hidden");
+  const [demoImageStartTime, setDemoImageStartTime] = useState<number | null>(
+    null
+  ); // Track when demo image was shown
+  const imageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const exitTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   // Connection management states
   const [connectionState, setConnectionState] = useState<ConnectionState>({
     isConnected: false,
     isConnecting: false,
     error: null,
-    reconnectAttempts: 0
+    reconnectAttempts: 0,
   });
-  
+
   // Spline loading states
   const [splineLoaded, setSplineLoaded] = useState(false);
   const [splineError, setSplineError] = useState(false);
-  
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
   // WebSocket refs and constants
   const ws = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const heartbeatIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const isUnmountedRef = useRef(false);
-  
-  const WS_URL = 'ws://localhost:8000/ws';
+
+  const WS_URL = "ws://localhost:8000/ws";
   const MAX_RECONNECT_ATTEMPTS = 5;
   const HEARTBEAT_INTERVAL = 30000; // 30 seconds
   const RECONNECT_INTERVALS = [1000, 2000, 4000, 8000, 16000]; // Exponential backoff
@@ -1466,18 +2871,18 @@ export const HeroSection = () => {
       clearTimeout(reconnectTimeoutRef.current);
       reconnectTimeoutRef.current = null;
     }
-    
+
     if (heartbeatIntervalRef.current) {
       clearInterval(heartbeatIntervalRef.current);
       heartbeatIntervalRef.current = null;
     }
-    
+
     if (ws.current) {
       ws.current.onopen = null;
       ws.current.onmessage = null;
       ws.current.onclose = null;
       ws.current.onerror = null;
-      
+
       if (ws.current.readyState === WebSocket.OPEN) {
         ws.current.close();
       }
@@ -1492,22 +2897,117 @@ export const HeroSection = () => {
         ws.current.send(JSON.stringify(message));
         return true;
       } catch (error) {
-        console.error('Failed to send WebSocket message:', error);
+        console.error("Failed to send WebSocket message:", error);
         return false;
       }
     }
     return false;
   }, []);
 
+  // Download image function
+  const downloadImage = useCallback(
+    async (imageUrl: string, filename: string) => {
+      try {
+        const response = await fetch(imageUrl);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        console.log(url);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      } catch (error) {
+        console.error("Failed to download image:", error);
+      }
+    },
+    []
+  );
+
+  // FIXED: Show animated image with proper timeout cleanup and exit animation
+  const showAnimatedImage = useCallback((imageUrl: string) => {
+    console.log("Starting image animation");
+
+    // Clear any existing timeouts
+    if (imageTimeoutRef.current) {
+      clearTimeout(imageTimeoutRef.current);
+      imageTimeoutRef.current = null;
+    }
+    if (exitTimeoutRef.current) {
+      clearTimeout(exitTimeoutRef.current);
+      exitTimeoutRef.current = null;
+    }
+
+    // Set initial states
+    setGeneratedImage(imageUrl);
+    setShowImage(true);
+    setImageAnimationState("entering");
+    setDemoImageStartTime(Date.now()); // Record when the image was shown
+
+    // After entry animation completes (2s), set to visible
+    setTimeout(() => {
+      console.log("Image visible, starting 10s timer");
+      setImageAnimationState("visible");
+
+      // After 10 seconds visible, start exit animation
+      imageTimeoutRef.current = setTimeout(() => {
+        console.log("Starting exit animation");
+        setImageAnimationState("exiting");
+
+        // After exit animation completes (2s), hide completely
+        exitTimeoutRef.current = setTimeout(() => {
+          console.log("Hiding image completely");
+          setShowImage(false);
+          setGeneratedImage(null);
+          setImageAnimationState("hidden");
+          setDemoImageStartTime(null); // Reset the timer
+        }, 2000); // Exit animation duration
+      }, 10000); // 10 seconds visible time
+    }, 2000); // Entry animation duration
+  }, []);
+
+  // Demo function to test image animation
+  const triggerDemoImage = useCallback(() => {
+    const demoImageUrl =
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face";
+    showAnimatedImage(demoImageUrl);
+  }, [showAnimatedImage]);
+
+  // Effect to hide image after 10 seconds from demo button click
+  useEffect(() => {
+    if (demoImageStartTime) {
+      const timeSinceDemo = Date.now() - demoImageStartTime;
+      const timeRemaining = Math.max(0, 10000 - timeSinceDemo); // Hide after 10 seconds from click
+
+      const timer = setTimeout(() => {
+        console.log("Hiding demo image after 10 seconds from click");
+        setImageAnimationState("exiting");
+
+        // After exit animation completes (2s), hide completely
+        exitTimeoutRef.current = setTimeout(() => {
+          setShowImage(false);
+          setGeneratedImage(null);
+          setImageAnimationState("hidden");
+          setDemoImageStartTime(null);
+        }, 2000);
+      }, timeRemaining);
+
+      return () => clearTimeout(timer);
+    }
+  }, [demoImageStartTime]);
+
   // Start heartbeat mechanism
   const startHeartbeat = useCallback(() => {
     if (heartbeatIntervalRef.current) {
       clearInterval(heartbeatIntervalRef.current);
     }
-    
+
     heartbeatIntervalRef.current = setInterval(() => {
-      if (!sendMessage({ type: 'ping' })) {
-        console.log('Heartbeat failed, connection may be lost');
+      if (!sendMessage({ type: "ping" })) {
+        console.log("Heartbeat failed, connection may be lost");
       }
     }, HEARTBEAT_INTERVAL);
   }, [sendMessage]);
@@ -1515,71 +3015,79 @@ export const HeroSection = () => {
   // Connect to WebSocket with reconnection logic
   const connectWebSocket = useCallback(() => {
     if (isUnmountedRef.current) return;
-    
+
     // Don't attempt if we're already connected or connecting
     if (connectionState.isConnected || connectionState.isConnecting) return;
 
-    setConnectionState(prev => ({ 
-      ...prev, 
-      isConnecting: true, 
-      error: null 
+    setConnectionState((prev) => ({
+      ...prev,
+      isConnecting: true,
+      error: null,
     }));
 
     try {
       cleanup(); // Clean up any existing connection
-      
+
       console.log(`Connecting to Pico backend: ${WS_URL}`);
       ws.current = new WebSocket(WS_URL);
 
       ws.current.onopen = () => {
         if (isUnmountedRef.current) return;
-        
-        console.log('Connected to Pico backend');
+
+        console.log("Connected to Pico backend");
         setConnectionState({
           isConnected: true,
           isConnecting: false,
           error: null,
-          reconnectAttempts: 0
+          reconnectAttempts: 0,
         });
-        
+
         startHeartbeat();
-        
+
         // Request initial greeting
-        sendMessage({ action: 'request_greeting' });
+        sendMessage({ action: "request_greeting" });
       };
 
       ws.current.onmessage = (event) => {
         if (isUnmountedRef.current) return;
-        
+
         try {
           const data = JSON.parse(event.data);
-          console.log('Received from Pico:', data);
+          console.log("Received from Pico:", data);
 
-          if (data.type === 'greeting') {
+          if (data.type === "greeting") {
             setPicoData(data);
             setFullText(data.text);
-          } else if (data.type === 'pong') {
+          } else if (data.type === "pong") {
             // Heartbeat response received
-            console.log('Heartbeat response received');
-          } else if (data.type === 'error') {
-            console.error('Server error:', data.error);
-            setConnectionState(prev => ({ 
-              ...prev, 
-              error: data.error || 'Unknown server error' 
+            console.log("Heartbeat response received");
+          } else if (data.type === "error") {
+            console.error("Server error:", data.error);
+            setConnectionState((prev) => ({
+              ...prev,
+              error: data.error || "Unknown server error",
             }));
-          } else if (data.event === 'state') {
+          } else if (data.event === "state") {
             const v = data.value;
-            if (v === 'listening') {
+            if (v === "listening") {
               setIsListening(true);
               setIsConversing(false);
               setIsTyping(false);
               setTitleHasBeenHidden(true);
-            } else if (v === 'speaking') {
+            } else if (v === "speaking") {
               setIsListening(false);
               setIsConversing(true);
               setIsTyping(true);
-              setTypedText('');
+              setTypedText("");
               setTitleHasBeenHidden(true);
+            } else if (v === "show_image" && data.url) {
+              // Handle image display from backend
+              const imageUrl = `http://localhost:8000/${data.url.replace(
+                /\\/g,
+                "/"
+              )}`;
+              console.log("Showing image from backend:", imageUrl);
+              showAnimatedImage(imageUrl);
             } else {
               // idle
               setIsListening(false);
@@ -1588,20 +3096,23 @@ export const HeroSection = () => {
             }
           }
         } catch (error) {
-          console.error('Error parsing WebSocket message:', error);
+          console.error("Error parsing WebSocket message:", error);
         }
       };
 
       ws.current.onclose = (event) => {
         if (isUnmountedRef.current) return;
-        
-        console.log(`WebSocket connection closed. Code: ${event.code}, Reason: ${event.reason}`);
-        
-        setConnectionState(prev => ({
+
+        console.log(
+          `WebSocket connection closed. Code: ${event.code}, Reason: ${event.reason}`
+        );
+
+        setConnectionState((prev) => ({
           ...prev,
           isConnected: false,
           isConnecting: false,
-          error: event.code === 1000 ? null : `Connection closed (${event.code})`
+          error:
+            event.code === 1000 ? null : `Connection closed (${event.code})`,
         }));
 
         // Reset conversation states when connection is lost
@@ -1615,16 +3126,29 @@ export const HeroSection = () => {
         }
 
         // Attempt reconnection if not intentionally closed
-        if (event.code !== 1000 && connectionState.reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
-          const delay = RECONNECT_INTERVALS[Math.min(connectionState.reconnectAttempts, RECONNECT_INTERVALS.length - 1)];
-          
-          setConnectionState(prev => ({ 
-            ...prev, 
-            reconnectAttempts: prev.reconnectAttempts + 1 
+        if (
+          event.code !== 1000 &&
+          connectionState.reconnectAttempts < MAX_RECONNECT_ATTEMPTS
+        ) {
+          const delay =
+            RECONNECT_INTERVALS[
+              Math.min(
+                connectionState.reconnectAttempts,
+                RECONNECT_INTERVALS.length - 1
+              )
+            ];
+
+          setConnectionState((prev) => ({
+            ...prev,
+            reconnectAttempts: prev.reconnectAttempts + 1,
           }));
 
-          console.log(`Reconnecting in ${delay}ms... (Attempt ${connectionState.reconnectAttempts + 1}/${MAX_RECONNECT_ATTEMPTS})`);
-          
+          console.log(
+            `Reconnecting in ${delay}ms... (Attempt ${
+              connectionState.reconnectAttempts + 1
+            }/${MAX_RECONNECT_ATTEMPTS})`
+          );
+
           reconnectTimeoutRef.current = setTimeout(() => {
             connectWebSocket();
           }, delay);
@@ -1633,33 +3157,40 @@ export const HeroSection = () => {
 
       ws.current.onerror = (error) => {
         if (isUnmountedRef.current) return;
-        
-        console.error('WebSocket error:', error);
-        setConnectionState(prev => ({ 
-          ...prev, 
+
+        console.error("WebSocket error:", error);
+        setConnectionState((prev) => ({
+          ...prev,
           isConnecting: false,
-          error: 'Connection failed' 
+          error: "Connection failed",
         }));
-        
+
         // Reset conversation states on error
         setIsListening(false);
         setIsConversing(false);
         setIsTyping(false);
       };
-
     } catch (error) {
-      console.error('Failed to create WebSocket connection:', error);
-      setConnectionState(prev => ({ 
-        ...prev, 
+      console.error("Failed to create WebSocket connection:", error);
+      setConnectionState((prev) => ({
+        ...prev,
         isConnecting: false,
-        error: 'Failed to create connection' 
+        error: "Failed to create connection",
       }));
     }
-  }, [connectionState.isConnected, connectionState.isConnecting, connectionState.reconnectAttempts, cleanup, startHeartbeat, sendMessage]);
+  }, [
+    connectionState.isConnected,
+    connectionState.isConnecting,
+    connectionState.reconnectAttempts,
+    cleanup,
+    startHeartbeat,
+    sendMessage,
+    showAnimatedImage,
+  ]);
 
   // Request new greeting from backend
   const requestNewGreeting = useCallback(() => {
-    sendMessage({ action: 'request_greeting' });
+    sendMessage({ action: "request_greeting" });
   }, [sendMessage]);
 
   // Initialize WebSocket connection
@@ -1705,17 +3236,15 @@ export const HeroSection = () => {
   // Audio level animation - only when connected
   useEffect(() => {
     let animationFrame: number;
-    
+
     if (connectionState.isConnected && (isListening || isConversing)) {
       const animateAudio = () => {
-        setAudioLevels(prev => 
-          prev.map(() => Math.random() * 0.8 + 0.2)
-        );
+        setAudioLevels((prev) => prev.map(() => Math.random() * 0.8 + 0.2));
         animationFrame = requestAnimationFrame(animateAudio);
       };
       animateAudio();
     }
-    
+
     return () => {
       if (animationFrame) {
         cancelAnimationFrame(animationFrame);
@@ -1818,6 +3347,113 @@ export const HeroSection = () => {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.6; }
         }
+
+        /* Animated Image Container */
+        .animated-image-container {
+          position: fixed;
+          top: 85px; /* CHANGED: Moved to top right (from bottom: 40px) */
+          right: 20px;
+          width: 320px;
+          height: auto;
+          perspective: 1000px;
+          z-index: 9999;
+          pointer-events: auto;
+        }
+        
+        .animated-image-container.entering {
+          animation: imageEntry 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .animated-image-container.visible {
+          opacity: 1;
+          transform: translateZ(0) scale(1) rotateY(0deg) rotateX(0deg);
+          filter: blur(0px) brightness(1);
+          animation: floatUpDown 3s ease-in-out infinite;
+        }
+        
+        .animated-image-container.exiting {
+          animation: imageExit 2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+        }
+        
+        @keyframes imageEntry {
+          0% {
+            opacity: 0;
+            transform: translateZ(-800px) rotateY(45deg) rotateX(25deg) scale(0.3);
+            filter: blur(15px) brightness(0.3);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translateZ(-200px) rotateY(15deg) rotateX(8deg) scale(0.7);
+            filter: blur(5px) brightness(0.7);
+          }
+          100% {
+            opacity: 1;
+            transform: translateZ(0) rotateY(0deg) rotateX(0deg) scale(1);
+            filter: blur(0px) brightness(1);
+          }
+        }
+        
+        @keyframes imageExit {
+          0% {
+            opacity: 1;
+            transform: translateZ(0) rotateY(0deg) rotateX(0deg) scale(1);
+            filter: blur(0px) brightness(1);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translateZ(-200px) rotateY(-15deg) rotateX(-8deg) scale(0.7);
+            filter: blur(5px) brightness(0.7);
+          }
+          100% {
+            opacity: 0;
+            transform: translateZ(-800px) rotateY(-45deg) rotateX(-25deg) scale(0.3);
+            filter: blur(15px) brightness(0.3);
+          }
+        }
+        
+        @keyframes floatUpDown {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-5px); }
+        }
+        
+        .animated-image {
+          width: 100%;
+          height: auto;
+          border-radius: 12px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+          position: relative;
+        }
+        
+        .download-icon {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          width: 32px;
+          height: 32px;
+          cursor: pointer;
+          background: rgba(0, 0, 0, 0.5);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(8px);
+        }
+        
+        .download-icon:hover {
+          background: rgba(0, 0, 0, 0.7);
+          transform: scale(1.1);
+        }
+        
+        .download-icon:active {
+          transform: scale(0.95);
+        }
+        
+        .download-icon svg {
+          width: 18px;
+          height: 18px;
+          fill: white;
+        }
         
         .refresh-button {
           position: fixed;
@@ -1848,134 +3484,243 @@ export const HeroSection = () => {
       `}</style>
 
       {/* Connection Status Indicator */}
-      <div className={`connection-status ${
-        connectionState.error ? 'status-error' :
-        connectionState.isConnecting ? 'status-connecting' :
-        connectionState.isConnected ? 'status-connected' : 'status-error'
-      }`}>
-        {connectionState.error ? '● ERROR' :
-         connectionState.isConnecting ? '◐ CONNECTING...' :
-         connectionState.isConnected ? '● PICO ONLINE' : '◌ OFFLINE'}
+      <div
+        className={`connection-status ${
+          connectionState.error
+            ? "status-error"
+            : connectionState.isConnecting
+            ? "status-connecting"
+            : connectionState.isConnected
+            ? "status-connected"
+            : "status-error"
+        }`}
+      >
+        {connectionState.error
+          ? "● ERROR"
+          : connectionState.isConnecting
+          ? "◐ CONNECTING..."
+          : connectionState.isConnected
+          ? "● PICO ONLINE"
+          : "◌ OFFLINE"}
       </div>
 
-      <section 
+      {/* Animated Image Container */}
+      {generatedImage && (
+        <div className={`animated-image-container ${imageAnimationState}`}>
+          <img
+            src={generatedImage}
+            alt="Generated Image"
+            className="animated-image"
+          />
+          <div
+            className="download-icon"
+            onClick={() =>
+              downloadImage(generatedImage, `generated-image-${Date.now()}.png`)
+            }
+            title="Download Image"
+          >
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M20 15v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+            </svg>
+          </div>
+        </div>
+      )}
+
+      <section
         className={`fixed inset-0 w-screen h-screen flex items-center justify-center overflow-hidden animated-bg transition-all duration-1000 select-none cursor-none ${
           connectionState.isConnected && (isListening || isConversing)
-            ? 'brightness-110 contrast-110' 
-            : 'brightness-100'
-        }`} 
-        style={{ 
-          transformOrigin: 'center center',
-          maxWidth: '100vw',
-          maxHeight: '100vh',
-          userSelect: 'none',
-          WebkitUserSelect: 'none',
-          MozUserSelect: 'none',
-          msUserSelect: 'none',
-          WebkitTouchCallout: 'none',
-          cursor: 'none'
+            ? "brightness-110 contrast-110"
+            : "brightness-100"
+        }`}
+        style={{
+          transformOrigin: "center center",
+          maxWidth: "100vw",
+          maxHeight: "100vh",
+          userSelect: "none",
+          WebkitUserSelect: "none",
+          MozUserSelect: "none",
+          msUserSelect: "none",
+          WebkitTouchCallout: "none",
+          cursor: "none",
         }}
       >
         {/* Enhanced Ambient Background Elements - ANIMATED */}
-        <div className={`absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none transition-opacity duration-1000 ${
-          connectionState.isConnected && (isListening || isConversing) ? 'opacity-30 sm:opacity-40' : 'opacity-15 sm:opacity-20'
-        }`}
-        style={{
-          userSelect: 'none',
-          WebkitUserSelect: 'none',
-          MozUserSelect: 'none',
-          msUserSelect: 'none',
-          cursor: 'none'
-        }}>
+        {/* Enhanced Ambient Background Elements - ANIMATED */}
+        <div
+          className={`absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none transition-opacity duration-1000 ${
+            connectionState.isConnected && (isListening || isConversing)
+              ? "opacity-30 sm:opacity-40"
+              : "opacity-15 sm:opacity-20"
+          }`}
+          style={{
+            userSelect: "none",
+            WebkitUserSelect: "none",
+            MozUserSelect: "none",
+            msUserSelect: "none",
+            cursor: "none",
+          }}
+        >
           {/* Background grid */}
-          <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none"
-               style={{
-                 backgroundImage: `
-                   linear-gradient(90deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%),
-                   linear-gradient(0deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%)
-                 `,
-                 backgroundSize: typeof window !== 'undefined' && window.innerWidth < 640 ? '50px 50px' : typeof window !== 'undefined' && window.innerWidth < 1024 ? '60px 60px' : '70px 70px',
-                 animation: `gridMove ${connectionState.isConnected && (isListening || isConversing) ? '8s' : '15s'} linear infinite`,
-                 userSelect: 'none',
-                 cursor: 'none'
-               }}>
-          </div>
-          
-          {/* Data streams */}
+          <div
+            className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none"
+            style={{
+              backgroundImage: `
+           linear-gradient(90deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%),
+           linear-gradient(0deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%)
+         `,
+              backgroundSize:
+                typeof window !== "undefined" && window.innerWidth < 640
+                  ? "50px 50px"
+                  : typeof window !== "undefined" && window.innerWidth < 1024
+                  ? "60px 60px"
+                  : "70px 70px",
+              // Use individual animation properties instead of shorthand
+              animationName: "gridMove",
+              animationDuration:
+                connectionState.isConnected && (isListening || isConversing)
+                  ? "8s"
+                  : "15s",
+              animationTimingFunction: "linear",
+              animationIterationCount: "infinite",
+              userSelect: "none",
+              cursor: "none",
+            }}
+          ></div>
+
+          {/* Data streams - FIXED */}
           <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none">
-            {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 6 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 8 : 10)].map((_, i) => (
+            {[
+              ...Array(
+                typeof window !== "undefined" && window.innerWidth < 640
+                  ? 6
+                  : typeof window !== "undefined" && window.innerWidth < 1024
+                  ? 8
+                  : 10
+              ),
+            ].map((_, i) => (
               <div
                 key={`stream-${i}`}
                 className={`absolute w-px overflow-hidden select-none pointer-events-none bg-gradient-to-b from-transparent via-neon-cyan/40 to-transparent transition-all duration-500 ${
-                  connectionState.isConnected && (isListening || isConversing) ? 'via-neon-cyan/70 sm:via-neon-cyan/80' : 'via-neon-cyan/30 sm:via-neon-cyan/40'
+                  connectionState.isConnected && (isListening || isConversing)
+                    ? "via-neon-cyan/70 sm:via-neon-cyan/80"
+                    : "via-neon-cyan/30 sm:via-neon-cyan/40"
                 }`}
                 style={{
-                  left: `${i * (100 / (typeof window !== 'undefined' && window.innerWidth < 640 ? 6 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 8 : 10))}%`,
-                  height: '100vh',
-                  maxHeight: '100vh',
-                  animation: `dataStream ${connectionState.isConnected && (isListening || isConversing) ? (2 + i * 0.2) : (3 + i * 0.4)}s linear infinite`,
+                  left: `${
+                    i *
+                    (100 /
+                      (typeof window !== "undefined" && window.innerWidth < 640
+                        ? 6
+                        : typeof window !== "undefined" &&
+                          window.innerWidth < 1024
+                        ? 8
+                        : 10))
+                  }%`,
+                  height: "100vh",
+                  maxHeight: "100vh",
+                  // Use individual animation properties instead of shorthand
+                  animationName: "dataStream",
+                  animationDuration:
+                    connectionState.isConnected && (isListening || isConversing)
+                      ? `${2 + i * 0.2}s`
+                      : `${3 + i * 0.4}s`,
+                  animationTimingFunction: "linear",
+                  animationIterationCount: "infinite",
                   animationDelay: `${i * 0.3}s`,
-                  userSelect: 'none',
-                  cursor: 'none'
+                  userSelect: "none",
+                  cursor: "none",
                 }}
               />
             ))}
           </div>
-          
-          {/* Geometric shapes */}
+
+          {/* Geometric shapes - FIXED */}
           <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none">
-            {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 3 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 4 : 6)].map((_, i) => (
+            {[
+              ...Array(
+                typeof window !== "undefined" && window.innerWidth < 640
+                  ? 3
+                  : typeof window !== "undefined" && window.innerWidth < 1024
+                  ? 4
+                  : 6
+              ),
+            ].map((_, i) => (
               <div
                 key={`geo-${i}`}
                 className={`absolute border overflow-hidden select-none pointer-events-none transition-all duration-700 ${
                   connectionState.isConnected && (isListening || isConversing)
-                    ? 'border-neon-purple/40 animate-pulse' 
-                    : 'border-neon-purple/20'
+                    ? "border-neon-purple/40 animate-pulse"
+                    : "border-neon-purple/20"
                 }`}
                 style={{
-                  left: `${15 + (i * 12)}%`,
+                  left: `${15 + i * 12}%`,
                   top: `${15 + (i % 3) * 20}%`,
                   width: `${15 + (i % 3) * 8}px`,
                   height: `${15 + (i % 3) * 8}px`,
-                  maxWidth: '35px',
-                  maxHeight: '35px',
+                  maxWidth: "35px",
+                  maxHeight: "35px",
+                  // Use individual animation properties instead of shorthand
+                  animationName: "geometricFloat",
+                  animationDuration:
+                    connectionState.isConnected && (isListening || isConversing)
+                      ? `${5 + i}s`
+                      : `${7 + i}s`,
+                  animationTimingFunction: "ease-in-out",
+                  animationIterationCount: "infinite",
                   animationDelay: `${i * 0.4}s`,
-                  animationDuration: `${5 + (i % 3) * 2}s`,
                   transform: `rotate(${i * 25}deg)`,
-                  animation: `geometricFloat ${connectionState.isConnected && (isListening || isConversing) ? (5 + i) : (7 + i)}s ease-in-out infinite`,
-                  userSelect: 'none',
-                  cursor: 'none'
+                  userSelect: "none",
+                  cursor: "none",
                 }}
               />
             ))}
           </div>
         </div>
 
-        <div className={`w-full h-full max-w-full max-h-full px-3 sm:px-4 md:px-6 lg:px-8 text-center relative z-10 transition-all duration-1000 flex flex-col justify-center items-center overflow-hidden`} 
-             style={{ 
-               transformOrigin: 'center center'
-             }}>
-          
+        <div
+          className={`w-full h-full max-w-full max-h-full px-3 sm:px-4 md:px-6 lg:px-8 text-center relative z-10 transition-all duration-1000 flex flex-col justify-center items-center overflow-hidden`}
+          style={{
+            transformOrigin: "center center",
+          }}
+        >
           {/* Title - Only show when not connected or before first conversation */}
           {!connectionState.isConnected || !titleHasBeenHidden ? (
-            <div className={`animate-fade-in-up transition-all duration-1000 mb-1 sm:mb-2 md:mb-3 overflow-hidden select-none ${
-              connectionState.isConnected && isListening ? 'text-glow-enhanced' : ''
-            } ${connectionState.isConnected && isConversing ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}
-                 style={{ 
-                   userSelect: 'none',
-                   WebkitUserSelect: 'none',
-                   cursor: 'default'
-                 }}>
-              <h1 className={`cyber-font text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-all duration-700 overflow-hidden select-none ${
-                connectionState.isConnected && isListening 
-                  ? 'text-glow-enhanced' 
-                  : 'text-glow'
-              }`} style={{ 
-                transformOrigin: 'center center',
-                userSelect: 'none',
-                WebkitUserSelect: 'none',
-                cursor: 'default'
-              }}>
+            <div
+              className={`animate-fade-in-up transition-all duration-1000 mb-1 sm:mb-2 md:mb-3 overflow-hidden select-none ${
+                connectionState.isConnected && isListening
+                  ? "text-glow-enhanced"
+                  : ""
+              } ${
+                connectionState.isConnected && isConversing
+                  ? "opacity-0 translate-y-4"
+                  : "opacity-100 translate-y-0"
+              }`}
+              style={{
+                userSelect: "none",
+                WebkitUserSelect: "none",
+                cursor: "default",
+              }}
+            >
+              <h1
+                className={`cyber-font text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight transition-all duration-700 overflow-hidden select-none ${
+                  connectionState.isConnected && isListening
+                    ? "text-glow-enhanced"
+                    : "text-glow"
+                }`}
+                style={{
+                  transformOrigin: "center center",
+                  userSelect: "none",
+                  WebkitUserSelect: "none",
+                  cursor: "default",
+                }}
+              >
                 HI I AM PICO
               </h1>
             </div>
@@ -1983,42 +3728,55 @@ export const HeroSection = () => {
 
           {/* Speech Bubble Conversation Area - Only show when connected */}
           {connectionState.isConnected && titleHasBeenHidden && (
-            <div className={`animate-fade-in-up transition-all duration-1000 mb-4 sm:mb-5 md:mb-6 overflow-visible ${
-              isConversing ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-0'
-            }`}>
-              <div className={`speech-bubble ${!isConversing ? 'speech-bubble-cyan' : ''} bg-gradient-to-r backdrop-blur-sm rounded-2xl p-4 sm:p-5 md:p-6 border max-w-lg mx-auto transition-all duration-700 overflow-hidden ${
-                isConversing 
-                  ? 'from-neon-purple/20 to-neon-blue/20 border-neon-purple/40 shadow-lg' 
-                  : 'from-neon-cyan/15 to-neon-blue/15 border-neon-cyan/35 shadow-md'
+            <div
+              className={`animate-fade-in-up transition-all duration-1000 mb-4 sm:mb-5 md:mb-6 overflow-visible ${
+                isConversing
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-100 translate-y-0"
               }`}
-              style={{ 
-                cursor: 'default',
-                boxShadow: isConversing 
-                  ? '0 8px 32px rgba(128, 0, 255, 0.3), 0 0 20px rgba(128, 0, 255, 0.2)' 
-                  : '0 8px 32px rgba(0, 255, 255, 0.25), 0 0 20px rgba(0, 255, 255, 0.15)'
-              }}>
+            >
+              <div
+                className={`speech-bubble ${
+                  !isConversing ? "speech-bubble-cyan" : ""
+                } bg-gradient-to-r backdrop-blur-sm rounded-2xl p-4 sm:p-5 md:p-6 border max-w-lg mx-auto transition-all duration-700 overflow-hidden ${
+                  isConversing
+                    ? "from-neon-purple/20 to-neon-blue/20 border-neon-purple/40 shadow-lg"
+                    : "from-neon-cyan/15 to-neon-blue/15 border-neon-cyan/35 shadow-md"
+                }`}
+                style={{
+                  cursor: "default",
+                  boxShadow: isConversing
+                    ? "0 8px 32px rgba(128, 0, 255, 0.3), 0 0 20px rgba(128, 0, 255, 0.2)"
+                    : "0 8px 32px rgba(0, 255, 255, 0.25), 0 0 20px rgba(0, 255, 255, 0.15)",
+                }}
+              >
                 {isConversing ? (
                   <div className="select-none">
                     {/* TYPING ANIMATION TEXT FROM BACKEND */}
-                    <p className="text-sm sm:text-base font-orbitron text-neon-purple/95 leading-relaxed overflow-hidden select-text font-medium"
-                       style={{ 
-                         cursor: 'text',
-                         userSelect: 'text',
-                         WebkitUserSelect: 'text',
-                         MozUserSelect: 'text',
-                         textShadow: '0 0 10px rgba(128, 0, 255, 0.3)'
-                       }}>
+                    <p
+                      className="text-sm sm:text-base font-orbitron text-neon-purple/95 leading-relaxed overflow-hidden select-text font-medium"
+                      style={{
+                        cursor: "text",
+                        userSelect: "text",
+                        WebkitUserSelect: "text",
+                        MozUserSelect: "text",
+                        textShadow: "0 0 10px rgba(128, 0, 255, 0.3)",
+                      }}
+                    >
                       "{typedText}
                       {isTyping && (
-                        <span className="animate-pulse text-neon-purple ml-1">|</span>
-                      )}"
+                        <span className="animate-pulse text-neon-purple ml-1">
+                          |
+                        </span>
+                      )}
+                      "
                     </p>
-                    
+
                     {/* Show backend metadata */}
                     {picoData && (picoData.mood || picoData.user_count) && (
                       <div className="mt-2 text-xs text-neon-purple/60 font-mono">
                         {picoData.mood && `Mood: ${picoData.mood}`}
-                        {picoData.mood && picoData.user_count && ' • '}
+                        {picoData.mood && picoData.user_count && " • "}
                         {picoData.user_count && `Users: ${picoData.user_count}`}
                       </div>
                     )}
@@ -2026,48 +3784,56 @@ export const HeroSection = () => {
                 ) : (
                   <div className="select-none">
                     {/* READY MESSAGE WITH DYNAMIC GREETING */}
-                    <p className="text-sm sm:text-base font-orbitron text-neon-cyan/95 leading-relaxed overflow-hidden select-text font-medium"
-                       style={{ 
-                         cursor: 'text',
-                         userSelect: 'text',
-                         WebkitUserSelect: 'text',
-                         MozUserSelect: 'text',
-                         textShadow: '0 0 10px rgba(0, 255, 255, 0.3)'
-                       }}>
-                      {picoData?.time_greeting 
-                        ? `${picoData.time_greeting} Ready for your next question...` 
-                        : '"Ready for your next question..."'
-                      }
+                    <p
+                      className="text-sm sm:text-base font-orbitron text-neon-cyan/95 leading-relaxed overflow-hidden select-text font-medium"
+                      style={{
+                        cursor: "text",
+                        userSelect: "text",
+                        WebkitUserSelect: "text",
+                        MozUserSelect: "text",
+                        textShadow: "0 0 10px rgba(0, 255, 255, 0.3)",
+                      }}
+                    >
+                      {picoData?.time_greeting
+                        ? `${picoData.time_greeting} Ready for your next question...`
+                        : '"Ready for your next question..."'}
                     </p>
                   </div>
                 )}
               </div>
             </div>
           )}
-
           {/* Robot Avatar Container - BIGGER SIZE */}
-          <div className={`relative mb-1 sm:mb-2 md:mb-3 overflow-visible select-none ${
-            connectionState.isConnected && isConversing ? 'scale-105' : connectionState.isConnected && titleHasBeenHidden ? 'scale-102' : 'scale-100'
-          }`} style={{ 
-            width: '850px',
-            height: '800px',
-            maxWidth: '95vw',
-            maxHeight: '70vh',
-            transform: 'translateY(20px)',
-            transformOrigin: 'center center',
-            transition: 'transform 0.3s ease'
-          }}>
-            
+          <div
+            className={`relative mb-1 sm:mb-2 md:mb-3 overflow-visible select-none ${
+              connectionState.isConnected && isConversing
+                ? "scale-105"
+                : connectionState.isConnected && titleHasBeenHidden
+                ? "scale-102"
+                : "scale-100"
+            }`}
+            style={{
+              width: "850px",
+              height: "800px",
+              maxWidth: "95vw",
+              maxHeight: "70vh",
+              transform: "translateY(20px)",
+              transformOrigin: "center center",
+              transition: "transform 0.3s ease",
+            }}
+          >
             {/* Animated Background Layer Behind Spline Scene */}
             {connectionState.isConnected && (isListening || isConversing) && (
-              <div 
+              <div
                 className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
                 style={{
-                  background: `radial-gradient(circle at center, rgba(${isConversing ? '128, 0, 255' : '0, 255, 255'}, 0.15), transparent 70%)`,
-                  animation: 'floating 4s ease-in-out infinite',
-                  borderRadius: '50%',
-                  transform: 'scale(1.2)',
-                  filter: `blur(20px)`
+                  background: `radial-gradient(circle at center, rgba(${
+                    isConversing ? "128, 0, 255" : "0, 255, 255"
+                  }, 0.15), transparent 70%)`,
+                  animation: "floating 4s ease-in-out infinite",
+                  borderRadius: "50%",
+                  transform: "scale(1.2)",
+                  filter: `blur(20px)`,
                 }}
               />
             )}
@@ -2075,31 +3841,39 @@ export const HeroSection = () => {
             {/* Data Stream Effects */}
             {connectionState.isConnected && (isListening || isConversing) && (
               <div className="absolute inset-0 z-1 pointer-events-none overflow-hidden select-none">
-                {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 6 : 8)].map((_, i) => (
+                {[
+                  ...Array(
+                    typeof window !== "undefined" && window.innerWidth < 640
+                      ? 6
+                      : 8
+                  ),
+                ].map((_, i) => (
                   <div
                     key={`stream-${i}`}
                     className={`absolute text-xs sm:text-sm font-mono animate-float overflow-hidden select-none pointer-events-none ${
-                      isConversing ? 'text-neon-purple/70' : 'text-neon-blue/60 sm:text-neon-blue/70'
+                      isConversing
+                        ? "text-neon-purple/70"
+                        : "text-neon-blue/60 sm:text-neon-blue/70"
                     }`}
                     style={{
-                      left: `${10 + (i * 8)}%`,
+                      left: `${10 + i * 8}%`,
                       top: `${10 + (i % 4) * 20}%`,
                       animationDelay: `${i * 0.25}s`,
                       animationDuration: `${2.5 + (i % 3) * 0.5}s`,
-                      textShadow: '0 0 8px currentColor',
-                      userSelect: 'none',
-                      cursor: 'none'
+                      textShadow: "0 0 8px currentColor",
+                      userSelect: "none",
+                      cursor: "none",
                     }}
                   >
-                    {isConversing 
-                      ? ['TALK', 'CHAT', 'CONV', 'RESP', 'WORD', 'SPEAK'][i] || 'AI'
-                      : ""
-                    }
+                    {isConversing
+                      ? ["TALK", "CHAT", "CONV", "RESP", "WORD", "SPEAK"][i] ||
+                        "AI"
+                      : ""}
                   </div>
                 ))}
               </div>
             )}
-            
+
             {/* Spline 3D Robot Scene with iframe - BIGGER */}
             <div className="relative z-10 w-full h-full">
               {!splineError ? (
@@ -2110,17 +3884,17 @@ export const HeroSection = () => {
                     height="100%"
                     frameBorder="0"
                     style={{
-                      border: 'none',
-                      backgroundColor: 'transparent',
-                      borderRadius: '100%',
-                      overflow: 'hidden'
+                      border: "none",
+                      backgroundColor: "transparent",
+                      borderRadius: "100%",
+                      overflow: "hidden",
                     }}
                     title="Pico 3D Robot"
                     onLoad={onSplineLoad}
                     onError={onSplineError}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   />
-                  
+
                   {/* Loading indicator */}
                   {!splineLoaded && (
                     <div className="absolute inset-0 flex items-center justify-center bg-transparent">
@@ -2134,35 +3908,41 @@ export const HeroSection = () => {
                 /* Fallback when Spline fails to load - BIGGER */
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-96 h-96 rounded-full bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 border-2 border-neon-cyan/30 flex items-center justify-center backdrop-blur-sm">
-                    <span className="text-neon-cyan font-orbitron text-4xl font-bold animate-pulse">PICO</span>
+                    <span className="text-neon-cyan font-orbitron text-4xl font-bold animate-pulse">
+                      PICO
+                    </span>
                   </div>
                 </div>
               )}
             </div>
-            
+
             {/* Audio Wave Visualization */}
             {connectionState.isConnected && (isListening || isConversing) && (
-              <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2 overflow-hidden select-none pointer-events-none z-20" 
-                   style={{ 
-                     perspective: '200px',
-                     maxWidth: '200px'
-                   }}>
+              <div
+                className="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2 overflow-hidden select-none pointer-events-none z-20"
+                style={{
+                  perspective: "200px",
+                  maxWidth: "200px",
+                }}
+              >
                 <div className="flex items-end justify-center space-x-1 sm:space-x-2 overflow-hidden select-none">
                   {audioLevels.slice(0, 7).map((level, index) => (
                     <div
                       key={index}
                       className={`rounded-full transition-all duration-100 overflow-hidden select-none pointer-events-none ${
-                        isConversing 
-                          ? 'bg-gradient-to-t from-neon-purple via-neon-blue to-neon-cyan' 
-                          : 'bg-gradient-to-t from-neon-cyan via-neon-blue to-neon-purple'
+                        isConversing
+                          ? "bg-gradient-to-t from-neon-purple via-neon-blue to-neon-cyan"
+                          : "bg-gradient-to-t from-neon-cyan via-neon-blue to-neon-purple"
                       }`}
                       style={{
-                        width: '3px',
+                        width: "3px",
                         height: `${level * 30 + 10}px`,
-                        maxHeight: '45px',
-                        boxShadow: `0 0 10px hsl(var(${isConversing ? '--neon-purple' : '--neon-cyan'})/0.8)`,
-                        userSelect: 'none',
-                        cursor: 'none'
+                        maxHeight: "45px",
+                        boxShadow: `0 0 10px hsl(var(${
+                          isConversing ? "--neon-purple" : "--neon-cyan"
+                        })/0.8)`,
+                        userSelect: "none",
+                        cursor: "none",
                       }}
                     />
                   ))}
@@ -2172,32 +3952,57 @@ export const HeroSection = () => {
           </div>
 
           {/* Status Indicator - Enhanced with Connection Info */}
-          <div className={`flex items-center justify-center space-x-2 animate-fade-in-up transition-all duration-500 overflow-hidden select-none ${
-            connectionState.isConnected && (isListening || isConversing) ? 'scale-102 sm:scale-105' : 'scale-100'
-          }`} style={{ 
-            animationDelay: '0.9s',
-            cursor: 'default',
-            transform: 'translateY(20px)',
-            marginTop: '10px'
-          }}>
-            <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-500 overflow-hidden select-none ${
-              connectionState.isConnected && isConversing ? 'bg-neon-purple pulse-glow-enhanced' :
-              connectionState.isConnected && isListening ? 'bg-neon-cyan pulse-glow-enhanced' : 
-              connectionState.isConnected ? 'bg-neon-cyan pulse-glow' :
-              connectionState.isConnecting ? 'bg-yellow-400 pulse-glow' : 'bg-red-400 pulse-glow'
-            }`}></div>
-            <span className={`text-xs sm:text-sm font-orbitron transition-all duration-500 overflow-hidden select-none ${
-              connectionState.isConnected && isConversing ? 'text-neon-purple font-bold' :
-              connectionState.isConnected && isListening ? 'text-neon-cyan font-bold' : 
-              connectionState.isConnected ? 'text-neon-cyan' :
-              connectionState.isConnecting ? 'text-yellow-400' : 'text-red-400'
+          <div
+            className={`flex items-center justify-center space-x-2 animate-fade-in-up transition-all duration-500 overflow-hidden select-none ${
+              connectionState.isConnected && (isListening || isConversing)
+                ? "scale-102 sm:scale-105"
+                : "scale-100"
             }`}
-            style={{ cursor: 'default' }}>
-              {connectionState.isConnected && isConversing ? 'Pico Speaking...' : 
-               connectionState.isConnected && isListening ? 'Pico Listening...' : 
-               connectionState.isConnected ? 'Pico System Online' :
-               connectionState.isConnecting ? 'Connecting to Pico...' :
-               connectionState.error ? `Connection Error: ${connectionState.error}` : 'Pico Offline'}
+            style={{
+              animationDelay: "0.9s",
+              cursor: "default",
+              transform: "translateY(20px)",
+              marginTop: "10px",
+            }}
+          >
+            <div
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-500 overflow-hidden select-none ${
+                connectionState.isConnected && isConversing
+                  ? "bg-neon-purple pulse-glow-enhanced"
+                  : connectionState.isConnected && isListening
+                  ? "bg-neon-cyan pulse-glow-enhanced"
+                  : connectionState.isConnected
+                  ? "bg-neon-cyan pulse-glow"
+                  : connectionState.isConnecting
+                  ? "bg-yellow-400 pulse-glow"
+                  : "bg-red-400 pulse-glow"
+              }`}
+            ></div>
+            <span
+              className={`text-xs sm:text-sm font-orbitron transition-all duration-500 overflow-hidden select-none ${
+                connectionState.isConnected && isConversing
+                  ? "text-neon-purple font-bold"
+                  : connectionState.isConnected && isListening
+                  ? "text-neon-cyan font-bold"
+                  : connectionState.isConnected
+                  ? "text-neon-cyan"
+                  : connectionState.isConnecting
+                  ? "text-yellow-400"
+                  : "text-red-400"
+              }`}
+              style={{ cursor: "default" }}
+            >
+              {connectionState.isConnected && isConversing
+                ? "Pico Speaking..."
+                : connectionState.isConnected && isListening
+                ? "Pico Listening..."
+                : connectionState.isConnected
+                ? "Pico System Online"
+                : connectionState.isConnecting
+                ? "Connecting to Pico..."
+                : connectionState.error
+                ? `Connection Error: ${connectionState.error}`
+                : "Pico Offline"}
             </span>
           </div>
         </div>
@@ -2205,7 +4010,7 @@ export const HeroSection = () => {
 
       {/* Manual Refresh Button (only show when connected) */}
       {connectionState.isConnected && (
-        <button 
+        <button
           onClick={requestNewGreeting}
           className="refresh-button"
           title="Request new greeting from Pico"
